@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/Logo.png";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
@@ -9,6 +9,7 @@ import { setUserDetails } from "../store/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
+  const [menuDisplay, setMenuDisplay] = useState(false);
   const user = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,20 +52,39 @@ const Header = () => {
           </div>
         </div>
         <div className="flex items-center gap-7">
-          {user?._id && (
-            <div className="text-3xl cursor-pointer relative flex justify-center">
-              {user?.profilePic ? (
-                <img
-                  src={user?.profilePic}
-                  className="w-10 h-10 rounded-full"
-                  alt={user?.name}
-                />
-              ) : (
-               
-                <FaRegCircleUser />
-              )}
-            </div>
-          )}
+          <div className="relative flex justify-center">
+            {user?._id && (
+              <div
+                className="text-3xl cursor-pointer relative flex justify-center"
+                onClick={() => setMenuDisplay((preve) => !preve)}
+              >
+                {user?.profilePic ? (
+                  <img
+                    src={user?.profilePic}
+                    className="w-10 h-10 rounded-full"
+                    alt={user?.name}
+                  />
+                ) : (
+                  <FaRegCircleUser/>
+                )}
+              </div>
+            )}
+
+            {menuDisplay && (
+              <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
+                <nav>
+                  <Link
+                    to={"/admin-panel"}
+                    className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
+                    onClick={() => setMenuDisplay((preve) => !preve)}
+                  >
+                    Admin Panel
+                  </Link>
+                </nav>
+              </div>
+            )}
+          </div>
+
           <div className="text-2xl relative">
             <span>
               <FaShoppingCart />
