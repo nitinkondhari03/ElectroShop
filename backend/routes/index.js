@@ -8,6 +8,7 @@ const allUsers = require("../controller/user/allUsers");
 const updateUser = require("../controller/user/updateUser");
 const UploadProductController = require("../controller/product/uploadProduct");
 const updateProductController = require("../controller/product/updateProduct");
+const getProductController = require("../controller/product/getProduct");
 
 const router = express.Router();
 
