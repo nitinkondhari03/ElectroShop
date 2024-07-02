@@ -9,6 +9,7 @@ const updateUser = require("../controller/user/updateUser");
 const UploadProductController = require("../controller/product/uploadProduct");
 const updateProductController = require("../controller/product/updateProduct");
 const getProductController = require("../controller/product/getProduct");
+const getCategoryProduct = require("../controller/product/getCategoryProductOne");
 
 const router = express.Router();
 
@@ -24,6 +25,7 @@ router.post("/update-user", authToken, updateUser);
 //product
 router.post("/upload-product",authToken,UploadProductController)
 router.get("/get-product",getProductController)
-router.post("/update-product",authToken,updateProductController)
+router.post("/update-product",authToken,updateProductController);
+router.get("/get-categoryProduct",getCategoryProduct)
 
 module.exports = router;
