@@ -9,6 +9,7 @@ import ForgotPassowrd from "../Pages/ForgotPassowrd";
 import AdminPanel from "../Pages/AdminPanel";
 import AllUsers from "../Pages/AllUsers";
 import AllProducts from "../Pages/AllProducts";
+import CategoryProduct from "../Pages/CategoryProduct";
 const AllRoutes = () => {
   return (
     <div>
@@ -18,6 +19,7 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassowrd />} />
+        <Route path="/product-category" element={<CategoryProduct/>} />
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />

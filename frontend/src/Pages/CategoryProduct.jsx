@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import productCategory from '../helpers/productCategory'
-import VerticalCard from '../components/VerticalCard'
+import VerticalCard from '../Components/VerticalCard'
 import SummaryApi from '../common'
 
 const CategoryProduct = () => {
