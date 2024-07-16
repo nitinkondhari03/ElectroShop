@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from '../helpers/displayCurrency';
 import VerticalCardProduct from '../Components/VerticalCardProduct';
-import CategroyWiseProductDisplay from '../components/CategoryWiseProductDisplay';
+import CategroyWiseProductDisplay from '../Components/CategoryWiseProductDisplay';
 import addToCart from '../helpers/addToCart';
 import Context from '../context';
 
