@@ -12,6 +12,7 @@ import AllProducts from "../Pages/AllProducts";
 import CategoryProduct from "../Pages/CategoryProduct";
 import ProductDetails from "../Pages/ProductDetails";
 import Cart from "../Pages/Cart";
+import SearchProduct from "../Pages/SearchProduct";
 const AllRoutes = () => {
   return (
     <div>
@@ -24,6 +25,7 @@ const AllRoutes = () => {
         <Route path="/product-category" element={<CategoryProduct/>} />
         <Route path="/product/:id" element={<ProductDetails/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/cart" element={<SearchProduct/>} />
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />

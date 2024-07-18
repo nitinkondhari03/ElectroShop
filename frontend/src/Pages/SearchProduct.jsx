@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import SummaryApi from '../common'
-import VerticalCard from '../components/VerticalCard'
+import VerticalCard from '../Components/VerticalCard'
 
 const SearchProduct = () => {
     const query = useLocation()
