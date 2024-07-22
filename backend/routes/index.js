@@ -21,6 +21,9 @@ const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduc
 const searchProduct = require("../controller/product/searchProduct");
 const filterProductController = require("../controller/product/filterProduct");
 const paymentController = require("../controller/order/paymentController");
+const webhooks = require("../controller/order/webhook");
+const orderController = require("../controller/order/order.controller");
+const allOrderController = require("../controller/order/allOrder.controller");
 
 const router = express.Router();
 
@@ -52,4 +55,8 @@ router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 
 //payment and order
 router.post('/checkout',authToken,paymentController)
+router.post('/webhook',webhooks) // /api/webhook
+router.get("/order-list",authToken,orderController)
+router.get("/all-order",authToken,allOrderController)
+
 module.exports = router;

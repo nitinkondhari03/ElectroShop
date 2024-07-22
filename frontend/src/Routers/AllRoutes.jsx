@@ -13,6 +13,10 @@ import CategoryProduct from "../Pages/CategoryProduct";
 import ProductDetails from "../Pages/ProductDetails";
 import Cart from "../Pages/Cart";
 import SearchProduct from "../Pages/SearchProduct";
+import Cancel from "../Pages/Cancel";
+import Success from "../Pages/Success";
+import AllOrder from "../Pages/AllOrder";
+import OrderPage from "../Pages/OrderPage";
 const AllRoutes = () => {
   return (
     <div>
@@ -22,13 +26,17 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassowrd />} />
-        <Route path="/product-category" element={<CategoryProduct/>} />
-        <Route path="/product/:id" element={<ProductDetails/>} />
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/search" element={<SearchProduct/>} />
+        <Route path="/product-category" element={<CategoryProduct />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/search" element={<SearchProduct />} />
+        <Route path="/cancel" element={<Cancel />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/order" element={<OrderPage />} />
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />
+          <Route path="all-orders" element={<AllOrder />} />
         </Route>
       </Routes>
       <Footer />
