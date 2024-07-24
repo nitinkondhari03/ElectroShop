@@ -70,7 +70,7 @@ const Header = () => {
             onChange={handleSearch}
             value={search}
           />
-          <div className="text-lg min-w-[50px] h-8 bg-blue-600 flex items-center justify-center rounded-r-full text-white">
+          <div className="text-lg min-w-[50px] h-8 bg-orange-500 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
           </div>
         </div>
@@ -134,7 +134,7 @@ const Header = () => {
             ) : (
               <Link
                 to={"/login"}
-                className="px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700"
+                className="px-3 py-1 rounded-full text-white bg-orange-500 hover:bg-orange-700"
               >
                 Login
               </Link>
