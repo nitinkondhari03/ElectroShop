@@ -2,7 +2,7 @@ import "./App.css";
 import AllRoutes from "./Routers/AllRoutes.jsx";
 import Context from "./context";
 import { useEffect, useState } from "react";
-import SummaryApi from "./common";
+import SummaryApi from "./common/index.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
@@ -15,6 +15,7 @@ function App() {
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = async () => {
+    console.log(SummaryApi.current_user.url)
     const dataResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
       credentials: "include",
