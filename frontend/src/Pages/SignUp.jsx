@@ -73,8 +73,8 @@ const SignUp = () => {
   return (
     <section id="signup">
       <div className="mx-auto container p-4">
+      <h1 className="text-3xl text-center font-bold my-7">Sign Up</h1>
         <div className="bg-white p-5 w-full max-w-lg mx-auto">
-          <h1 className="text-3xl text-center font-bold my-7">Sign Up</h1>
           <form className="pt-6 flex flex-col gap-2" onSubmit={handleSubmit}>
             <div className="grid">
               <label className="font-bold">Name : </label>
