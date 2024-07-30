@@ -14,7 +14,7 @@ const paymentController = async(request,response)=>{
             billing_address_collection : 'auto',
             shipping_options : [
                 {
-                    shipping_rate : 'shr_1PhmIDSJODKFPUo9a2c2AlXQ'
+                    shipping_rate : 'shr_1Phob4SJODKFPUo9ElyROEDk'
                 }
             ],
             customer_email : user.email,
@@ -24,7 +24,7 @@ const paymentController = async(request,response)=>{
             line_items : cartItems.map((item,index)=>{
                 return{
                     price_data : {
-                      currency : 'inr',
+                      currency : 'usd',
                       product_data : {
                         name : item.productId.productName,
                         images : item.productId.productImage,
