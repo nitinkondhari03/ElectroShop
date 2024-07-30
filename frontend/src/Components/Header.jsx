@@ -51,9 +51,8 @@ const Header = () => {
       navigate("/search");
     }
   };
-
   return (
-    <header className="h-16 shadow-md bg-white w-full z-40">
+    <header className="h-16 shadow-md bg-white fixed w-full z-40">
       <div className=" h-full container mx-auto flex items-center px-4 justify-between">
         <div className="">
           <Link to={"/"}>
@@ -65,12 +64,12 @@ const Header = () => {
         <div className="hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2">
           <input
             type="text"
-            placeholder="Search Product Here..."
+            placeholder="search product here..."
             className="w-full outline-none"
             onChange={handleSearch}
             value={search}
           />
-          <div className="text-lg min-w-[50px] h-8 bg-orange-500 flex items-center justify-center rounded-r-full text-white">
+          <div className="text-lg min-w-[50px] h-8 bg-red-600 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
           </div>
         </div>
@@ -106,6 +105,13 @@ const Header = () => {
                       Admin Panel
                     </Link>
                   )}
+                  <Link
+                    to={"/order"}
+                    className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
+                    onClick={() => setMenuDisplay((preve) => !preve)}
+                  >
+                    Order
+                  </Link>
                 </nav>
               </div>
             )}
@@ -134,7 +140,7 @@ const Header = () => {
             ) : (
               <Link
                 to={"/login"}
-                className="px-3 py-1 rounded-full text-white bg-orange-500 hover:bg-orange-700"
+                className="px-3 py-1 rounded-full text-white bg-red-600 hover:bg-red-700"
               >
                 Login
               </Link>
