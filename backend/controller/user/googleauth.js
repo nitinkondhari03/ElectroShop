@@ -15,7 +15,12 @@ async function googleauth(req, res) {
           expires: expiryDate,
         })
         .status(200)
-        .json(rest);
+        .json({
+          data: rest,
+          success: true,
+          error: false,
+          message: "Google User Login Successfully!",
+        });
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
@@ -43,7 +48,7 @@ async function googleauth(req, res) {
           data: rest,
           success: true,
           error: false,
-          message: "User created Successfully!",
+          message: "Google User created Successfully!",
         });
     }
   } catch (err) {
