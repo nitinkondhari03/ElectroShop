@@ -7,27 +7,26 @@ async function googleauth(req, res) {
     const user = await userModel.findOne({ email: req.body.email });
     if (user) {
       const { password: hashedPassword, ...rest } = user._doc;
-      if (checkPassword) {
-        const tokenData = {
-          _id: user._id,
-          email: user.email,
-        };
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
-          expiresIn: 60 * 60 * 8,
-        });
-        const tokenOption = {
-          httpOnly: true,
-          secure: true,
-          sameSite: "None",
-        };
-        res.cookie("token", token, tokenOption).status(200).json({
-          data: rest,
-          success: true,
-          error: false,
-          message: "Google User Login Successfully!",
-        });
-        //
-      }
+      const tokenData = {
+        _id: user._id,
+        email: user.email,
+      };
+      const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
+        expiresIn: 60 * 60 * 8,
+      });
+
+      const tokenOption = {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      };
+      res.cookie("token", token, tokenOption).status(200).json({
+        data: rest,
+        success: true,
+        error: false,
+        message: "Google User Login Successfully!",
+      });
+      //
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
@@ -44,28 +43,26 @@ async function googleauth(req, res) {
       await newUser.save();
       const { password: hashedPassword2, ...rest } = newUser._doc;
       //
-      if (checkPassword) {
-        const tokenData = {
-          _id: newUser._id,
-          email: newUser.email,
-        };
-        const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
-          expiresIn: 60 * 60 * 8,
-        });
+      const tokenData = {
+        _id: newUser._id,
+        email: newUser.email,
+      };
+      const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, {
+        expiresIn: 60 * 60 * 8,
+      });
 
-        const tokenOption = {
-          httpOnly: true,
-          secure: true,
-          sameSite: "None",
-        };
-        res.cookie("token", token, tokenOption).status(200).json({
-          data: rest,
-          success: true,
-          error: false,
-          message: "Google User created Successfully!",
-        });
-        //
-      }
+      const tokenOption = {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      };
+      res.cookie("token", token, tokenOption).status(200).json({
+        data: rest,
+        success: true,
+        error: false,
+        message: "Google User created Successfully!",
+      });
+      //
     }
   } catch (err) {
     res.json({
