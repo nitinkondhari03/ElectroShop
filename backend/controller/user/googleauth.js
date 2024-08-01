@@ -39,7 +39,12 @@ async function googleauth(req, res) {
           expires: expiryDate,
         })
         .status(200)
-        .json(rest);
+        .json({
+          data: rest,
+          success: true,
+          error: false,
+          message: "User created Successfully!",
+        });
     }
   } catch (err) {
     res.json({

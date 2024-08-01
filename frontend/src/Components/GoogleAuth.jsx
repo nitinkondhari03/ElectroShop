@@ -31,6 +31,7 @@ export default function GoogleAuth() {
         }),
       });
       const data = await res.json();
+      console.log("data",data)
       if (data.success) {
         toast.success(data.message);
         navigate("/");
