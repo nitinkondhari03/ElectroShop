@@ -7,8 +7,9 @@ import DisplayImage from "./DisplayImage";
 import { MdDelete } from "react-icons/md";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
+import { Country, State, City } from "country-state-city";
 
-const UploadProduct = ({ onClose, fetchData }) => {
+const OrderAddress = ({ onClose }) => {
   const [data, setData] = useState({
     productName: "",
     brandName: "",
@@ -20,6 +21,12 @@ const UploadProduct = ({ onClose, fetchData }) => {
   });
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
   const [fullScreenImage, setFullScreenImage] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
+  const [pinCode, setPinCode] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -242,6 +249,99 @@ const UploadProduct = ({ onClose, fetchData }) => {
             name="description"
             value={data.description}
           ></textarea>
+          <label htmlFor="sellingPrice" className="mt-3">
+            Selling Price :
+          </label>
+          <input
+            type="text"
+            placeholder="Address"
+            required
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="p-2 bg-slate-100 border rounded"
+          />
+
+          <label htmlFor="sellingPrice" className="mt-3">
+            Selling Price :
+          </label>
+          <input
+            type="number"
+            placeholder="Pin Code"
+            required
+            value={pinCode}
+            onChange={(e) => setPinCode(e.target.value)}
+            className="p-2 bg-slate-100 border rounded"
+          />
+
+          <label htmlFor="sellingPrice" className="mt-3">
+            Selling Price :
+          </label>
+          <input
+            type="number"
+            placeholder="Phone Number"
+            required
+            value={phoneNo}
+            onChange={(e) => setPhoneNo(e.target.value)}
+            size="10"
+            className="p-2 bg-slate-100 border rounded"
+          />
+
+          <label htmlFor="sellingPrice" className="mt-3">
+            Selling Price :
+          </label>
+          <select
+            required
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+            className="p-2 bg-slate-100 border rounded"
+          >
+            <option value="">Country</option>
+            {Country &&
+              Country.getAllCountries().map((item) => (
+                <option key={item.isoCode} value={item.isoCode}>
+                  {item.name}
+                </option>
+              ))}
+          </select>
+          <label htmlFor="sellingPrice" className="mt-3">
+            Selling Price :
+          </label>
+          {country && (
+            <select
+              required
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              className="p-2 bg-slate-100 border rounded"
+            >
+              <option value="">State</option>
+              {State &&
+                State.getStatesOfCountry(country).map((item) => (
+                  <option key={item.isoCode} value={item.isoCode}>
+                    {item.name}
+                  </option>
+                ))}
+            </select>
+          )}
+          <label htmlFor="sellingPrice" className="mt-3">
+            City :
+          </label>
+          {state && (
+            <select
+              required
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="p-2 bg-slate-100 border rounded"
+            >
+              <option value="">City</option>
+              {City &&
+                City.getCitiesOfState(country, state).map((item) => (
+                  <option key={item.isoCode} value={item.isoCode}>
+                    {item.name}
+                    {console.log(item)}
+                  </option>
+                ))}
+            </select>
+          )}
 
           <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
             Upload Product
@@ -260,4 +360,4 @@ const UploadProduct = ({ onClose, fetchData }) => {
   );
 };
 
-export default UploadProduct;
+export default OrderAddress;

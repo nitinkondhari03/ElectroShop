@@ -16,6 +16,7 @@ import Cancel from "../Pages/Cancel";
 import Success from "../Pages/Success";
 import AllOrder from "../Pages/AllOrder";
 import OrderPage from "../Pages/OrderPage";
+import Profile from "../Pages/Profile";
 const AllRoutes = () => {
   return (
     <div>
@@ -31,6 +32,7 @@ const AllRoutes = () => {
         <Route path="/cancel" element={<Cancel />} />
         <Route path="/success" element={<Success />} />
         <Route path="/order" element={<OrderPage />} />
+        <Route path="/profile" element={<Profile/>}/>
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />
