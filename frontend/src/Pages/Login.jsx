@@ -10,6 +10,7 @@ import GoogleAuth from "../Components/GoogleAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -30,7 +31,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setisLoading(true);
     const dataResponse = await fetch(SummaryApi.signIn.url, {
       method: SummaryApi.signIn.method,
       credentials: "include",
@@ -43,6 +44,7 @@ const Login = () => {
     const dataApi = await dataResponse.json();
 
     if (dataApi.success) {
+      setisLoading(false);
       toast.success(dataApi.message);
       navigate("/");
       fetchUserDetails();
@@ -50,16 +52,17 @@ const Login = () => {
     }
 
     if (dataApi.error) {
+      setisLoading(false);
       toast.error(dataApi.message);
     }
+    setisLoading(false);
   };
 
-  console.log("data login", data);
 
   return (
     <section id="login">
       <div className="mx-auto container p-4">
-        <h1 className="text-3xl text-center font-bold my-7">Sign In</h1>
+        <h1 className="text-3xl text-center font-bold my-7">Login</h1>
         <div className="bg-white p-5 w-full max-w-lg mx-auto">
           <form className="pt-6 flex flex-col gap-2" onSubmit={handleSubmit}>
             <div className="grid">
@@ -115,7 +118,7 @@ const Login = () => {
               to={"/sign-up"}
               className=" text-red-600 hover:text-red-700 hover:underline"
             >
-              Sign up
+              Register
             </Link>
           </p>
         </div>

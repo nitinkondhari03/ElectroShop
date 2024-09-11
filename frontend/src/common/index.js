@@ -1,4 +1,4 @@
-const backendDomin = "https://mern-a77g.onrender.com";
+const backendDomin = "http://localhost:8080";
 
 const SummaryApi = {
   signUP: {
@@ -12,6 +12,22 @@ const SummaryApi = {
   current_user: {
     url: `${backendDomin}/api/user-details`,
     method: "get",
+  },
+  forgotPassword: {
+    url: `${backendDomin}/api/forgotPassword`,
+    method: "post",
+  },
+  changePassword: {
+    url: `${backendDomin}/api/changePassword`,
+    method: "post",
+  },
+  updateProfile: {
+    url: `${backendDomin}/api/updateProfile`,
+    method: "post",
+  },
+  resetPassword: {
+    url: `${backendDomin}/api`,
+    method: "post",
   },
   logout_user: {
     url: `${backendDomin}/api/userLogout`,

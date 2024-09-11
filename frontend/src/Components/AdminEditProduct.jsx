@@ -46,7 +46,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   };
 
   const handleDeleteProductImage = async (index) => {
-    console.log("image index", index);
+    
 
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
@@ -141,7 +141,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             className="p-2 bg-slate-100 border rounded"
           >
             <option value={""}>Select Category</option>
-            {productCategory.map((el, index) => {
+            {productCategory?.map((el, index) => {
               return (
                 <option value={el.value} key={el.value + index}>
                   {el.label}
@@ -172,9 +172,9 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
           <div>
             {data?.productImage[0] ? (
               <div className="flex items-center gap-2">
-                {data.productImage.map((el, index) => {
+                {data.productImage?.map((el, index) => {
                   return (
-                    <div className="relative group">
+                    <div key={index} className="relative group">
                       <img
                         src={el}
                         alt={el}

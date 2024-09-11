@@ -25,7 +25,10 @@ const webhooks = require("../controller/order/webhook");
 const orderController = require("../controller/order/order.controller");
 const allOrderController = require("../controller/order/allOrder.controller");
 const googleauth = require("../controller/user/googleauth");
-
+const forgotPassword=require("../controller/user/forgotPassword");
+const resetPassword = require("../controller/user/resetPassword");
+const changePassword = require("../controller/user/chnagePassword");
+const updateProfile = require("../controller/user/updateProfile");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -33,6 +36,10 @@ router.post("/signin", userSignInController);
 router.get("/user-details", authToken, userDetailsController);
 router.get("/userLogout", userLogout);
 router.post("/google", googleauth);
+router.post("/forgotPassword",forgotPassword)
+router.post("/resetPassword/:token",resetPassword)
+router.post("/changePassword",authToken,changePassword)
+router.post("/updateProfile",authToken,updateProfile)
 //admin panel
 router.get("/all-user", authToken, allUsers);
 router.post("/update-user", authToken, updateUser);

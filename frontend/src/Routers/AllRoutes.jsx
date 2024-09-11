@@ -17,6 +17,9 @@ import Success from "../Pages/Success";
 import AllOrder from "../Pages/AllOrder";
 import OrderPage from "../Pages/OrderPage";
 import Profile from "../Pages/Profile";
+import ResetPassword from "../Pages/ResetPassword";
+import ChangePassword from "../Pages/ChangePassword";
+import UpdateProfile from "../Pages/UpdateProfile";
 const AllRoutes = () => {
   return (
     <div>
@@ -25,6 +28,8 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassowrd />} />
+        <Route path="/resetPassword/:id" element={<ResetPassword/>}/>
+        <Route path="/changePassword" element={<ChangePassword/>}/>
         <Route path="/product-category" element={<CategoryProduct />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
@@ -33,6 +38,8 @@ const AllRoutes = () => {
         <Route path="/success" element={<Success />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/updateProfile" element={<UpdateProfile/>}/>
+        
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />

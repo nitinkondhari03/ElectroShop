@@ -15,7 +15,6 @@ function App() {
   const [cartProductCount, setCartProductCount] = useState(0);
 
   const fetchUserDetails = async () => {
-    console.log(SummaryApi.current_user.url)
     const dataResponse = await fetch(SummaryApi.current_user.url, {
       method: SummaryApi.current_user.method,
       credentials: "include",

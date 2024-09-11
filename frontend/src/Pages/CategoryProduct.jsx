@@ -53,7 +53,7 @@ const CategoryProduct = () => {
     },[filterCategoryList])
 
     useEffect(()=>{
-      const arrayOfCategory = Object.keys(selectCategory).map(categoryKeyName =>{
+      const arrayOfCategory = Object.keys(selectCategory)?.map(categoryKeyName =>{
         if(selectCategory[categoryKeyName]){
           return categoryKeyName
         }
@@ -63,7 +63,7 @@ const CategoryProduct = () => {
       setFilterCategoryList(arrayOfCategory)
 
       //format for url change when change on the checkbox
-      const urlFormat = arrayOfCategory.map((el,index) => {
+      const urlFormat = arrayOfCategory?.map((el,index) => {
         if((arrayOfCategory.length - 1 ) === index  ){
           return `category=${el}`
         }
@@ -123,9 +123,9 @@ const CategoryProduct = () => {
 
                     <form className='text-sm flex flex-col gap-2 py-2'>
                         {
-                          productCategory.map((categoryName,index)=>{
+                          productCategory?.map((categoryName,index)=>{
                             return(
-                              <div className='flex items-center gap-3'>
+                              <div key={index} className='flex items-center gap-3'>
                                  <input type='checkbox' name={"category"} checked={selectCategory[categoryName?.value]} value={categoryName?.value} id={categoryName?.value} onChange={handleSelectCategory} />
                                  <label htmlFor={categoryName?.value}>{categoryName?.label}</label>
                               </div>

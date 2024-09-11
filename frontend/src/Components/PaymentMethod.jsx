@@ -25,7 +25,7 @@ const PaymentMethod = ({ onClose }) => {
           <h1 className="font-bold">Select Payment Method</h1>
         </div>
 
-        <form className="grid p-4 gap-2  pb-5" onSubmit={handleSubmit}>
+        <form className="grid p-10 gap-6  pb-5" onSubmit={handleSubmit}>
           <label
             className={
               gender == "male"
@@ -39,6 +39,7 @@ const PaymentMethod = ({ onClose }) => {
               value="male"
               checked={gender === "male"}
               onChange={handleGenderChange}
+    
             />
             Cash On Delivery
           </label>

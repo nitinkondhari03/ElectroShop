@@ -11,8 +11,6 @@ const AllProducts = () => {
     const response = await fetch(SummaryApi.allProduct.url);
     const dataResponse = await response.json();
 
-    console.log("product data", dataResponse);
-
     setAllProduct(dataResponse?.data || []);
   };
 
@@ -34,7 +32,7 @@ const AllProducts = () => {
 
       {/**all product */}
       <div className="flex items-center flex-wrap gap-5 py-4 h-[calc(100vh-190px)] overflow-y-scroll">
-        {allProduct.map((product, index) => {
+        {allProduct?.map((product, index) => {
           return (
             <AdminProductCard
               data={product}

@@ -17,7 +17,7 @@ const ChangeUserRole = ({
     const handleOnChangeSelect = (e) => {
         setUserRole(e.target.value)
 
-        console.log(e.target.value)
+        
     }
 
     const updateUserRole = async() =>{
@@ -41,7 +41,7 @@ const ChangeUserRole = ({
             callFunc()
         }
 
-        console.log("role updated",responseData)
+     
 
     }
 
@@ -62,7 +62,7 @@ const ChangeUserRole = ({
                 <p>Role :</p>  
                 <select className='border px-4 py-1' value={userRole} onChange={handleOnChangeSelect}>
                     {
-                        Object.values(ROLE).map(el => {
+                        Object.values(ROLE)?.map(el => {
                             return(
                                 <option value={el} key={el}>{el}</option>
                             )

@@ -52,9 +52,9 @@ const AllUsers = () => {
             </thead>
             <tbody className=''>
                 {
-                    allUser.map((el,index) => {
+                    allUser?.map((el,index) => {
                         return(
-                            <tr>
+                            <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>{el?.name}</td>
                                 <td>{el?.email}</td>

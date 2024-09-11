@@ -53,7 +53,6 @@ const ProductDetails = () => {
 
   }
 
-  console.log("data",data)
 
   useEffect(()=>{
     fetchProductDetails()
@@ -66,7 +65,7 @@ const ProductDetails = () => {
   const handleZoomImage = useCallback((e) =>{
     setZoomImage(true)
     const { left , top, width , height } = e.target.getBoundingClientRect()
-    console.log("coordinate", left, top , width , height)
+
 
     const x = (e.clientX - left) / width
     const y = (e.clientY - top) / height
@@ -130,7 +129,7 @@ const ProductDetails = () => {
                     loading ? (
                       <div className='flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full'>
                         {
-                          productImageListLoading.map((el,index) =>{
+                          productImageListLoading?.map((el,index) =>{
                             return(
                               <div className='h-20 w-20 bg-slate-200 rounded animate-pulse' key={"loadingImage"+index}>
                               </div>

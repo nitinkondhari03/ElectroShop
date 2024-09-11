@@ -8,8 +8,8 @@ import PaymentMethod from "../Components/PaymentMethod";
 import OrderAddress from "../Components/OrderAddress";
 
 const Cart = () => {
-    const [openUploadProduct, setOpenUploadProduct] = useState(false);
-    
+  const [openUploadProduct, setOpenUploadProduct] = useState(false);
+
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
@@ -123,8 +123,6 @@ const Cart = () => {
     if (responseData?.id) {
       stripePromise.redirectToCheckout({ sessionId: responseData.id });
     }
-
-    console.log("payment response", responseData);
   };
 
   const totalQty = data.reduce(
@@ -155,7 +153,7 @@ const Cart = () => {
                   ></div>
                 );
               })
-            : data.map((product, index) => {
+            : data?.map((product, index) => {
                 return (
                   <div
                     key={product?._id + "Add To Cart Loading"}
@@ -253,13 +251,14 @@ const Cart = () => {
         )}
       </div>
 
-      {/**upload prouct component */}
-      {openUploadProduct && (
-        <OrderAddress
-          onClose={() => setOpenUploadProduct(false)}
-          
-        />
+    {/* Shipping Address */}
+ {openUploadProduct && (
+        <OrderAddress onClose={() => setOpenUploadProduct(false)} />
       )}
+      {/**Payments */}
+      {/* {openUploadProduct && (
+        <PaymentMethod onClose={() => setOpenUploadProduct(false)} />
+      )} */}
     </div>
   );
 };

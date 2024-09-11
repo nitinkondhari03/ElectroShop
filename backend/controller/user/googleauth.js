@@ -21,7 +21,7 @@ async function googleauth(req, res) {
         sameSite: "None",
       };
       res.cookie("token", token, tokenOption).status(200).json({
-        data: rest,
+        data: token,
         success: true,
         error: false,
         message: "Google User Login Successfully!",
@@ -33,9 +33,7 @@ async function googleauth(req, res) {
         Math.random().toString(36).slice(-8);
       const hashedPassword = bcryptjs.hashSync(generatedPassword, 10);
       const newUser = new userModel({
-        username:
-          req.body.name.split(" ").join("").toLowerCase() +
-          Math.random().toString(36).slice(-8),
+        name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
         profilePicture: req.body.photo,
@@ -57,7 +55,7 @@ async function googleauth(req, res) {
         sameSite: "None",
       };
       res.cookie("token", token, tokenOption).status(200).json({
-        data: rest,
+        data: token,
         success: true,
         error: false,
         message: "Google User created Successfully!",
