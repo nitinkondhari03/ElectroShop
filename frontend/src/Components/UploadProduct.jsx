@@ -45,10 +45,26 @@ const UploadProduct = ({ onClose, fetchData }) => {
   };
 
   const handleDeleteProductImage = async (index) => {
-
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
-
+    let x = data.productImage[index];
+    const segment = x.substring(x.lastIndexOf("/") + 1);
+    const m = segment.substring(0, segment.lastIndexOf("."));
+    console.log(m);
+    let publicId = `Products Images/${m}`;
+    console.log(publicId);
+    const dataResponse = await fetch(SummaryApi.cloudinaryDelete.url, {
+      method: SummaryApi.cloudinaryDelete.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        publicId: publicId,
+      }),
+    });
+    const dataApi = await dataResponse.json();
+    console.log(dataApi);
     setData((preve) => {
       return {
         ...preve,
@@ -73,7 +89,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
     });
 
     const responseData = await response.json();
-
+    console.log(responseData);
     if (responseData.success) {
       toast.success(responseData?.message);
       onClose();
@@ -91,7 +107,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
         <div className="flex justify-between items-center pb-3">
           <h2 className="font-bold text-lg">Upload Product</h2>
           <div
-            className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
+            className="w-fit ml-auto text-2xl hover:text-cyan-800 cursor-pointer"
             onClick={onClose}
           >
             <CgClose />
@@ -106,7 +122,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="text"
             id="productName"
-            placeholder="enter product name"
+            placeholder="Enter Product Name"
             name="productName"
             value={data.productName}
             onChange={handleOnChange}
@@ -120,7 +136,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="text"
             id="brandName"
-            placeholder="enter brand name"
+            placeholder="Enter Brand Name"
             value={data.brandName}
             name="brandName"
             onChange={handleOnChange}
@@ -186,7 +202,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
                       />
 
                       <div
-                        className="absolute bottom-0 right-0 p-1 text-white bg-red-600 rounded-full hidden group-hover:block cursor-pointer"
+                        className="absolute bottom-0 right-0 p-1 text-white bg-cyan-800 rounded-full group-hover:block cursor-pointer"
                         onClick={() => handleDeleteProductImage(index)}
                       >
                         <MdDelete />
@@ -196,7 +212,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
                 })}
               </div>
             ) : (
-              <p className="text-red-600 text-xs">
+              <p className="text-cyan-800 text-xs">
                 *Please upload product image
               </p>
             )}
@@ -208,7 +224,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="number"
             id="price"
-            placeholder="enter price"
+            placeholder="Enter Price"
             value={data.price}
             name="price"
             onChange={handleOnChange}
@@ -222,7 +238,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="number"
             id="sellingPrice"
-            placeholder="enter selling price"
+            placeholder="Enter Selling Price"
             value={data.sellingPrice}
             name="sellingPrice"
             onChange={handleOnChange}
@@ -235,14 +251,14 @@ const UploadProduct = ({ onClose, fetchData }) => {
           </label>
           <textarea
             className="h-28 bg-slate-100 border resize-none p-1"
-            placeholder="enter product description"
+            placeholder="Enter Product Description"
             rows={3}
             onChange={handleOnChange}
             name="description"
             value={data.description}
           ></textarea>
 
-          <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
+          <button className="px-3 py-2 mt-3 bg-cyan-800 text-white mb-10 hover:bg-cyan-9">
             Upload Product
           </button>
         </form>

@@ -29,6 +29,8 @@ const forgotPassword=require("../controller/user/forgotPassword");
 const resetPassword = require("../controller/user/resetPassword");
 const changePassword = require("../controller/user/chnagePassword");
 const updateProfile = require("../controller/user/updateProfile");
+const cloudinaryDelete = require("../controller/user/cloudinaryDelete");
+const DeleteProductController = require("../controller/product/deleteProduct");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -40,6 +42,7 @@ router.post("/forgotPassword",forgotPassword)
 router.post("/resetPassword/:token",resetPassword)
 router.post("/changePassword",authToken,changePassword)
 router.post("/updateProfile",authToken,updateProfile)
+router.delete("/cloudinaryDelete",authToken,cloudinaryDelete)
 //admin panel
 router.get("/all-user", authToken, allUsers);
 router.post("/update-user", authToken, updateUser);
@@ -53,7 +56,7 @@ router.post("/category-product", getCategoryWiseProduct);
 router.post("/product-details", getProductDetails);
 router.get("/search", searchProduct);
 router.post("/filter-product", filterProductController);
-
+router.delete("/DeleteProduct",authToken,DeleteProductController);
 //user add to cart
 router.post("/addtocart", authToken, addToCartController);
 router.get("/countAddToCartProduct", authToken, countAddToCartProduct);

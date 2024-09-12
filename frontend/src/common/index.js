@@ -25,6 +25,10 @@ const SummaryApi = {
     url: `${backendDomin}/api/updateProfile`,
     method: "post",
   },
+  cloudinaryDelete: {
+    url: `${backendDomin}/api/cloudinaryDelete`,
+    method: "delete",
+  },
   resetPassword: {
     url: `${backendDomin}/api`,
     method: "post",
@@ -52,6 +56,10 @@ const SummaryApi = {
   updateProduct: {
     url: `${backendDomin}/api/update-product`,
     method: "post",
+  },
+  DeleteProduct:{
+    url: `${backendDomin}/api/DeleteProduct`,
+    method: "delete",
   },
   categoryProduct: {
     url: `${backendDomin}/api/get-categoryProduct`,
