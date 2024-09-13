@@ -82,7 +82,7 @@ const HorizontalCardProduct = ({ category, heading }) => {
                 <Link
                   to={"product/" + product?._id}
                   key={index}
-                  className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
+                  className="w-full min-w-[280px] md:min-w-[340px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
                 >
                   <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]">
                     <img
@@ -90,23 +90,23 @@ const HorizontalCardProduct = ({ category, heading }) => {
                       className="object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
                     />
                   </div>
-                  <div className="p-4 grid">
-                    <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black">
+                  <div className="grid w-full">
+                    <h2 className="font-medium text-center text-base md:text-lg text-ellipsis line-clamp-1 text-black">
                       {product?.productName}
                     </h2>
-                    <p className="capitalize text-slate-500">
+                    <p className="capitalize text-center text-slate-500">
                       {product?.category}
                     </p>
-                    <div className="flex gap-3">
-                      <p className="text-red-600 font-medium">
+                    <div className="flex gap-3 justify-around">
+                      <p className="text-green-800 font-bold">
                         {displayINRCurrency(product?.sellingPrice)}
                       </p>
-                      <p className="text-slate-500 line-through">
+                      <p className="text-green-700 font-medium line-through">
                         {displayINRCurrency(product?.price)}
                       </p>
                     </div>
                     <button
-                      className="text-sm bg-slate-700 hover:bg-slate-800 text-white px-3 py-0.5 rounded-full"
+                      className="text-sm bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-0.5"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
                       Add to Cart

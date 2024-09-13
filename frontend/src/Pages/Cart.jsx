@@ -168,7 +168,7 @@ const Cart = () => {
                     <div className="px-4 py-2 relative">
                       {/**delete product */}
                       <div
-                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer"
+                        className="absolute right-0 text-cyan-800 rounded-full p-2 hover:bg-cyan-900 hover:text-white cursor-pointer"
                         onClick={() => deleteCartProduct(product?._id)}
                       >
                         <MdDelete />
@@ -181,10 +181,10 @@ const Cart = () => {
                         {product?.productId.category}
                       </p>
                       <div className="flex items-center justify-between">
-                        <p className="text-red-600 font-medium text-lg">
+                        <p className="text-green-900 font-medium text-lg">
                           {displayINRCurrency(product?.productId?.sellingPrice)}
                         </p>
-                        <p className="text-slate-600 font-semibold text-lg">
+                        <p className="text-green-900 font-semibold text-lg">
                           {displayINRCurrency(
                             product?.productId?.sellingPrice * product?.quantity
                           )}
@@ -192,7 +192,7 @@ const Cart = () => {
                       </div>
                       <div className="flex items-center gap-3 mt-1">
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
                           onClick={() =>
                             decraseQty(product?._id, product?.quantity)
                           }
@@ -201,7 +201,7 @@ const Cart = () => {
                         </button>
                         <span>{product?.quantity}</span>
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
                           onClick={() =>
                             increaseQty(product?._id, product?.quantity)
                           }
@@ -222,7 +222,7 @@ const Cart = () => {
               <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
             ) : (
               <div className="h-36 bg-white">
-                <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
+                <h2 className="text-white bg-green-800 px-4 py-1">Summary</h2>
                 <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
                   <p>Quantity</p>
                   <p>{totalQty}</p>
@@ -234,7 +234,7 @@ const Cart = () => {
                 </div>
 
                 <button
-                  className="bg-blue-600 p-2 text-white w-full mt-2"
+                  className="bg-cyan-800 p-2 text-white w-full mt-2 hover:bg-cyan-900"
                   onClick={handlePayment}
                 >
                   Payment
@@ -251,8 +251,8 @@ const Cart = () => {
         )}
       </div>
 
-    {/* Shipping Address */}
- {openUploadProduct && (
+      {/* Shipping Address */}
+      {openUploadProduct && (
         <OrderAddress onClose={() => setOpenUploadProduct(false)} />
       )}
       {/**Payments */}

@@ -55,7 +55,7 @@ export default function GoogleAuth() {
         <button
           type="button"
           disabled="true"
-          className="py-2 px-4 flex uppercase justify-center items-center bg-orange-800 hover:bg-orange-900 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+          className="py-2 px-4 flex uppercase justify-center items-center bg-green-800 hover:bg-green-900 focus:ring-green-600 focus:ring-offset-green-300 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
         >
           <svg
             aria-hidden="true"
@@ -79,7 +79,7 @@ export default function GoogleAuth() {
       ) : (
         <button
           type="button"
-          className="py-2 px-4 flex uppercase justify-center items-center bg-orange-800 hover:bg-orange-900 focus:ring-orange-500 focus:ring-offset-orange-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+          className="py-2 px-4 flex uppercase justify-center items-center bg-green-800 hover:bg-green-900 focus:ring-green-600 focus:ring-offsetgreen-300 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
           onClick={handleGoogleClick}
         >
           <svg

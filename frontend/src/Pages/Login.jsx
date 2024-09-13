@@ -105,7 +105,7 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80">
+            <button className="bg-cyan-800 text-white p-2 rounded-lg uppercase hover:opacity-95 hover:bg-cyan-900 disabled:opacity-80">
               Login
             </button>
             <h1 className="text-center">OR</h1>
