@@ -6,7 +6,7 @@ const PaymentMethod = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(gender);
     onClose();
   };
   const handleGenderChange = (e) => {
@@ -39,7 +39,6 @@ const PaymentMethod = ({ onClose }) => {
               value="male"
               checked={gender === "male"}
               onChange={handleGenderChange}
-    
             />
             Cash On Delivery
           </label>
@@ -61,7 +60,7 @@ const PaymentMethod = ({ onClose }) => {
           </label>
 
           <button className=" bg-cyan-800 text-white mt-3 hover:bg-cyan-900 p-4">
-            Upload Product
+          Payment Method
           </button>
         </form>
       </div>

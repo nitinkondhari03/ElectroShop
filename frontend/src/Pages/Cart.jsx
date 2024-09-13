@@ -235,15 +235,9 @@ const Cart = () => {
 
                 <button
                   className="bg-cyan-800 p-2 text-white w-full mt-2 hover:bg-cyan-900"
-                  onClick={handlePayment}
-                >
-                  Payment
-                </button>
-                <button
-                  className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-all py-1 px-3 rounded-full "
                   onClick={() => setOpenUploadProduct(true)}
                 >
-                  Upload Product
+                  Payment
                 </button>
               </div>
             )}
@@ -252,13 +246,13 @@ const Cart = () => {
       </div>
 
       {/* Shipping Address */}
-      {openUploadProduct && (
-        <OrderAddress onClose={() => setOpenUploadProduct(false)} />
-      )}
-      {/**Payments */}
       {/* {openUploadProduct && (
-        <PaymentMethod onClose={() => setOpenUploadProduct(false)} />
+        <OrderAddress onClose={() => setOpenUploadProduct(false)} />
       )} */}
+      {/**Payments */}
+      {openUploadProduct && (
+        <PaymentMethod onClose={() => setOpenUploadProduct(false)} />
+      )}
     </div>
   );
 };
