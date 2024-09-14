@@ -31,6 +31,8 @@ const changePassword = require("../controller/user/chnagePassword");
 const updateProfile = require("../controller/user/updateProfile");
 const cloudinaryDelete = require("../controller/user/cloudinaryDelete");
 const DeleteProductController = require("../controller/product/deleteProduct");
+const payment = require("../controller/payment/payment");
+const verify = require("../controller/payment/verify");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -69,5 +71,7 @@ router.post("/checkout", authToken, paymentController);
 router.post("/webhook", webhooks); // /api/webhook
 router.get("/order-list", authToken, orderController);
 router.get("/all-order", authToken, allOrderController);
+router.get("/payment",authToken,payment)
+router.post("/payment/verify",authToken,verify)
 
 module.exports = router;
