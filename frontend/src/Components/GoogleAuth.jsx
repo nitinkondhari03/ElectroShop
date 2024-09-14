@@ -19,7 +19,7 @@ export default function GoogleAuth() {
      
       let displayName=result.user.displayName;
       displayName.split(" ")
-      const res = await fetch("http://localhost:8080/api/google", {
+      const res = await fetch("https://mern-a77g.onrender.com/api/google", {
         method: "POST",
         credentials: "include",
         headers: {
