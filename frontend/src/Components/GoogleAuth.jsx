@@ -16,11 +16,11 @@ export default function GoogleAuth() {
       const auth = getAuth(app);
 
       const result = await signInWithPopup(auth, provider);
-     
-      let displayName=result.user.displayName;
-      displayName.split(" ")
-      const res = await fetch("https://mern-a77g.onrender.com/api/google", {
-        method: "POST",
+
+      let displayName = result.user.displayName;
+      displayName.split(" ");
+      const res = await fetch(SummaryApi.googleAuth.url, {
+        method: SummaryApi.googleAuth.method,
         credentials: "include",
         headers: {
           "content-type": "application/json",
