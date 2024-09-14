@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { Country, State, City } from "country-state-city";
-const OrderAddress = ({ onClose, setOpenpaymentoption }) => {
+const OrderAddress = ({
+  onClose,
+  setOpenpaymentoption,
+  setaddresss,
+  setcitys,
+  setcountrys,
+  setpins,
+  setstates,
+  setPhoneNos,
+}) => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -11,6 +20,12 @@ const OrderAddress = ({ onClose, setOpenpaymentoption }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setaddresss(address);
+    setcitys(city);
+    setcountrys(country);
+    setpins(pinCode);
+    setstates(state);
+    setPhoneNos(phoneNo);
     setOpenpaymentoption(true);
     onClose();
   };
@@ -125,7 +140,7 @@ const OrderAddress = ({ onClose, setOpenpaymentoption }) => {
             <input
               type="number"
               placeholder="Pin Code"
-              maxlength="6"
+              maxLength="6"
               required
               value={pinCode}
               onChange={(e) => setPinCode(e.target.value)}

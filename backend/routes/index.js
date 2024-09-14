@@ -33,6 +33,7 @@ const cloudinaryDelete = require("../controller/user/cloudinaryDelete");
 const DeleteProductController = require("../controller/product/deleteProduct");
 const payment = require("../controller/payment/payment");
 const verify = require("../controller/payment/verify");
+const uploadOrders = require("../controller/order/uploadOrders");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -67,11 +68,11 @@ router.post("/update-cart-product", authToken, updateAddToCartProduct);
 router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 
 //payment and order
-router.post("/checkout", authToken, paymentController);
-router.post("/webhook", webhooks); // /api/webhook
+// router.post("/checkout", authToken, paymentController);
+// router.post("/webhook", webhooks); // /api/webhook
 router.get("/order-list", authToken, orderController);
 router.get("/all-order", authToken, allOrderController);
 router.get("/payment",authToken,payment)
 router.post("/payment/verify",authToken,verify)
-
+router.post("/order",authToken,uploadOrders)
 module.exports = router;

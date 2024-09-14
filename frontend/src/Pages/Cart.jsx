@@ -1,20 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import SummaryApi from "../common";
 import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import PaymentMethod from "../Components/PaymentMethod";
 import OrderAddress from "../Components/OrderAddress";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
+  const user = useSelector((state) => state?.user?.user);
   const [openAddress, setOpenAddress] = useState(false);
   const [openpaymentoption, setOpenpaymentoption] = useState(false);
+  const [addresss, setaddresss] = useState("");
+  const [citys, setcitys] = useState("");
+  const [countrys, setcountrys] = useState("");
+  const [pins, setpins] = useState("");
+  const [states, setstates] = useState("");
+  const [phoneNos, setPhoneNos] = useState("");
   const [paymentMethod, setpaymentMethod] = useState("");
+  const [productss, setproductss] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
   const loadingCart = new Array(4).fill(null);
-
+  const { fetchUserAddToCart } = useContext(Context);
+  const navigate = useNavigate();
   const fetchData = async () => {
     const response = await fetch(SummaryApi.addToCartProductView.url, {
       method: SummaryApi.addToCartProductView.method,
@@ -28,6 +38,12 @@ const Cart = () => {
 
     if (responseData.success) {
       setData(responseData.data);
+      let x = responseData.data;
+      let m = [];
+      for (let i = 0; i < x.length; i++) {
+        m.push(x[i].productId);
+      }
+      setproductss(m);
     }
   };
 
@@ -111,7 +127,7 @@ const Cart = () => {
     (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
     0
   );
-  const handlePaymentverify = async () => {
+  const handlePaymentverify = async (orderids) => {
     try {
       const dataResponse = await fetch(SummaryApi.paymentverify.url, {
         method: SummaryApi.paymentverify.method,
@@ -119,19 +135,59 @@ const Cart = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ orderId: "54ff37f7ed4c" }),
+        body: JSON.stringify({ orderId: orderids }),
       });
 
       const dataApi = await dataResponse.json();
 
       console.log(dataApi);
+      handleorder({ dataApi });
     } catch (error) {
       console.log(error);
     }
   };
   console.log("paymentMethod", paymentMethod);
-  const handleorder = async () => {
-    console.log("Handleclick");
+  const handleorder = async ({ dataApi }) => {
+    console.log(dataApi);
+    let datas = {
+      userId: user._id,
+      email: user.email,
+      mobile: phoneNos,
+      productDetails: productss,
+      paymentDetails: {
+        order_id: dataApi[0].order_id,
+        order_amount: dataApi[0].order_amount,
+        payment_amount: dataApi[0].payment_amount,
+        payment_method: [dataApi[0].payment_method],
+        payment_currency: dataApi[0].payment_currency,
+        payment_group: dataApi[0].payment_group,
+        payment_status: dataApi[0].payment_status,
+      },
+      shipping_status: "shipping soon",
+      shipping_Address: {
+        address: addresss,
+        city: citys,
+        state: states,
+        country: countrys,
+        pin: pins,
+      },
+    };
+    const dataResponse = await fetch(SummaryApi.uploadorder.url, {
+      method: SummaryApi.uploadorder.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(datas),
+    });
+
+    const dataApis = await dataResponse.json();
+    console.log(dataApi)
+    if (dataApi[0].payment_status == "SUCCESS") {
+      fetchUserAddToCart()
+      navigate("/success");
+    }
+    console.log(datas);
   };
   return (
     <div className="container mx-auto">
@@ -250,13 +306,19 @@ const Cart = () => {
         <OrderAddress
           onClose={() => setOpenAddress(false)}
           setOpenpaymentoption={setOpenpaymentoption}
+          setaddresss={setaddresss}
+          setcitys={setcitys}
+          setcountrys={setcountrys}
+          setpins={setpins}
+          setstates={setstates}
+          setPhoneNos={setPhoneNos}
         />
       )}
       {/**Payments */}
       {openpaymentoption && (
         <PaymentMethod
           setpaymentMethod={setpaymentMethod}
-          handlePaymentverify={() => handlePaymentverify()}
+          handlePaymentverify={handlePaymentverify}
           onClose={() => setOpenpaymentoption(false)}
         />
       )}

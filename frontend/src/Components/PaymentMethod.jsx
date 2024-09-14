@@ -3,9 +3,9 @@ import { CgClose } from "react-icons/cg";
 import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
 import SummaryApi from "../common";
-const PaymentMethod = ({ setpaymentMethod, onClose, handlePaymentverify }) => {
+const PaymentMethod = ({setpaymentMethod, onClose, handlePaymentverify }) => {
   const [payments, setpayments] = useState("");
-  const [orderid, setOrderId] = useState("");
+  let orderids;
   let cashfree;
   var initializeSDK = async function () {
     cashfree = await load({
@@ -23,7 +23,7 @@ const PaymentMethod = ({ setpaymentMethod, onClose, handlePaymentverify }) => {
       const res = await response.json();
       if (res && res.payment_session_id) {
         console.log(res);
-        setOrderId(res.order_id);
+        orderids=res.order_id;
         return res.payment_session_id;
       }
     } catch (error) {
@@ -32,10 +32,10 @@ const PaymentMethod = ({ setpaymentMethod, onClose, handlePaymentverify }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(payments=="Cash On Delivery"){
-      console.log("casjbi iwbeibwe iwebiwefbr")
+    if (payments == "Cash On Delivery") {
+      console.log("casjbi iwbeibwe iwebiwefbr");
       setpaymentMethod(payments);
-       onClose();
+      onClose();
     }
     try {
       let sessionId = await getSessionId();
@@ -58,7 +58,7 @@ const PaymentMethod = ({ setpaymentMethod, onClose, handlePaymentverify }) => {
           console.log("Payment has been completed, Check for Payment Status");
           console.log(result.paymentDetails.paymentMessage);
           console.log(result);
-          handlePaymentverify();
+          handlePaymentverify(orderids);
           setpaymentMethod(payments);
           onClose();
         }

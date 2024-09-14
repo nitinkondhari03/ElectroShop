@@ -2,33 +2,74 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    productDetails: {
-      type: Array,
-      default: [],
+    userId: {
+      type: String,
+      default: "",
     },
     email: {
       type: String,
       default: "",
     },
-    userId: {
+    mobile: {
       type: String,
       default: "",
     },
+    productDetails: {
+      type: Array,
+      default: [],
+    },
     paymentDetails: {
-      paymentId: {
+      order_id: {
         type: String,
-        default: "",
+        default: " ",
       },
-      payment_method_type: [],
+      order_amount: {
+        type: String,
+        default: 0,
+      },
+      payment_amount: {
+        type: String,
+        default: 0,
+      },
+      payment_method: [],
+      payment_currency: {
+        type: String,
+        default: " ",
+      },
+      payment_group: {
+        type: String,
+        default: " ",
+      },
       payment_status: {
         type: String,
-        default: "",
+        default: " ",
       },
     },
-    shipping_options: [],
-    totalAmount: {
-      type: Number,
-      default: 0,
+    shipping_status: {
+      type: String,
+      default: " ",
+    },
+    shipping_Address: {
+      address: {
+        type: String,
+        default: " ",
+      },
+      city: {
+        type: String,
+        default: " ",
+      },
+      state: {
+        type: String,
+        default: " ",
+      },
+      country: {
+        type: String,
+        default: " ",
+      },
+      pin: {
+        type: String,
+        default: " ",
+      },
     },
   },
   {

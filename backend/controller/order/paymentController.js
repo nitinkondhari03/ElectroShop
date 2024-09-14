@@ -46,9 +46,7 @@ const paymentController = async(request,response)=>{
             cancel_url : `${process.env.FRONTEND_URL}/cancel`,
         }
 
-        const session = await stripe.checkout.sessions.create(params)
-
-        response.status(303).json(session)
+        response.status(303).json("onfofn")
 
     } catch (error) {
         response.json({

@@ -1,4 +1,4 @@
-const backendDomin = "https://mern-a77g.onrender.com";
+const backendDomin = "http://localhost:8080";
 
 const SummaryApi = {
   signUP: {
@@ -124,6 +124,10 @@ const SummaryApi = {
   allOrder: {
     url: `${backendDomin}/api/all-order`,
     method: "get",
+  },
+  uploadorder: {
+    url: `${backendDomin}/api/order`,
+    method: "post",
   },
 };
 
