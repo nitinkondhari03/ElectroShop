@@ -36,7 +36,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   const handleUploadProduct = async (e) => {
     const file = e.target.files[0];
     const uploadImageCloudinary = await uploadImage(file);
-console.log(file)
+
     setData((preve) => {
       return {
         ...preve,

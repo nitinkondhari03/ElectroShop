@@ -3,13 +3,13 @@ import SummaryApi from "../common";
 import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
-import { loadStripe } from "@stripe/stripe-js";
 import PaymentMethod from "../Components/PaymentMethod";
 import OrderAddress from "../Components/OrderAddress";
 
 const Cart = () => {
-  const [openUploadProduct, setOpenUploadProduct] = useState(false);
-
+  const [openAddress, setOpenAddress] = useState(false);
+  const [openpaymentoption, setOpenpaymentoption] = useState(false);
+  const [paymentMethod, setpaymentMethod] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
@@ -103,28 +103,6 @@ const Cart = () => {
     }
   };
 
-  const handlePayment = async () => {
-    const stripePromise = await loadStripe(
-      process.env.REACT_APP_STRIPE_PUBLIC_KEY
-    );
-    const response = await fetch(SummaryApi.payment.url, {
-      method: SummaryApi.payment.method,
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        cartItems: data,
-      }),
-    });
-
-    const responseData = await response.json();
-
-    if (responseData?.id) {
-      stripePromise.redirectToCheckout({ sessionId: responseData.id });
-    }
-  };
-
   const totalQty = data.reduce(
     (previousValue, currentValue) => previousValue + currentValue.quantity,
     0
@@ -133,6 +111,28 @@ const Cart = () => {
     (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
     0
   );
+  const handlePaymentverify = async () => {
+    try {
+      const dataResponse = await fetch(SummaryApi.paymentverify.url, {
+        method: SummaryApi.paymentverify.method,
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ orderId: "54ff37f7ed4c" }),
+      });
+
+      const dataApi = await dataResponse.json();
+
+      console.log(dataApi);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log("paymentMethod", paymentMethod);
+  const handleorder = async () => {
+    console.log("Handleclick");
+  };
   return (
     <div className="container mx-auto">
       <div className="text-center text-lg my-3">
@@ -234,10 +234,10 @@ const Cart = () => {
                 </div>
 
                 <button
-                  className="bg-cyan-800 p-2 text-white w-full mt-2 hover:bg-cyan-900"
-                  onClick={() => setOpenUploadProduct(true)}
+                  className="bg-cyan-800 p-2 text-white w-full mt-2 capitalize hover:bg-cyan-900"
+                  onClick={() => setOpenAddress(true)}
                 >
-                  Payment
+                  continue
                 </button>
               </div>
             )}
@@ -246,12 +246,19 @@ const Cart = () => {
       </div>
 
       {/* Shipping Address */}
-      {/* {openUploadProduct && (
-        <OrderAddress onClose={() => setOpenUploadProduct(false)} />
-      )} */}
+      {openAddress && (
+        <OrderAddress
+          onClose={() => setOpenAddress(false)}
+          setOpenpaymentoption={setOpenpaymentoption}
+        />
+      )}
       {/**Payments */}
-      {openUploadProduct && (
-        <PaymentMethod onClose={() => setOpenUploadProduct(false)} />
+      {openpaymentoption && (
+        <PaymentMethod
+          setpaymentMethod={setpaymentMethod}
+          handlePaymentverify={() => handlePaymentverify()}
+          onClose={() => setOpenpaymentoption(false)}
+        />
       )}
     </div>
   );

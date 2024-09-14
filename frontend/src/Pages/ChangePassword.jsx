@@ -143,22 +143,7 @@ const ChangePassword = () => {
                 </button>
               )}
             </form>
-            <p className="my-5">
-            Already have account ?{" "}
-            <Link
-              to={"/login"}
-              className=" text-red-600 hover:text-red-700 hover:underline mr-5"
-            >
-              Login
-            </Link>
-            Don't have account ?{" "}
-            <Link
-              to={"/sign-up"}
-              className=" text-red-600 hover:text-red-700 hover:underline"
-            >
-              Register
-            </Link>
-          </p>
+           
           </div>
         </div>
       </section>
