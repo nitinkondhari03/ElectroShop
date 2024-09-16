@@ -1,5 +1,6 @@
 const backendDomin = "https://mern-a77g.onrender.com";
-// https://mern-a77g.onrender.com
+//https://mern-a77g.onrender.com
+//http://localhost:8080
 const SummaryApi = {
   signUP: {
     url: `${backendDomin}/api/signup`,
