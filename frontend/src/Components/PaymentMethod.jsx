@@ -3,7 +3,7 @@ import { CgClose } from "react-icons/cg";
 import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
 import SummaryApi from "../common";
-const PaymentMethod = ({setpaymentMethod, onClose, handlePaymentverify }) => {
+const PaymentMethod = ({setpaymentMethod, onClose,handleordercashondelivery, handlePaymentverify }) => {
   const [payments, setpayments] = useState("");
   let orderids;
   let cashfree;
@@ -33,9 +33,11 @@ const PaymentMethod = ({setpaymentMethod, onClose, handlePaymentverify }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (payments == "Cash On Delivery") {
+      handleordercashondelivery()
       console.log("casjbi iwbeibwe iwebiwefbr");
       setpaymentMethod(payments);
       onClose();
+      return
     }
     try {
       let sessionId = await getSessionId();

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
 import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
@@ -17,7 +17,6 @@ const Cart = () => {
   const [pins, setpins] = useState("");
   const [states, setstates] = useState("");
   const [phoneNos, setPhoneNos] = useState("");
-  const [paymentMethod, setpaymentMethod] = useState("");
   const [productss, setproductss] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,6 +43,7 @@ const Cart = () => {
         m.push(x[i].productId);
       }
       setproductss(m);
+      console.log(m)
     }
   };
 
@@ -146,7 +146,6 @@ const Cart = () => {
       console.log(error);
     }
   };
-  console.log("paymentMethod", paymentMethod);
   const handleorder = async ({ dataApi }) => {
     console.log(dataApi);
     let datas = {
@@ -182,12 +181,53 @@ const Cart = () => {
     });
 
     const dataApis = await dataResponse.json();
-    console.log(dataApi)
+    console.log(dataApi);
     if (dataApi[0].payment_status == "SUCCESS") {
-      fetchUserAddToCart()
+      fetchUserAddToCart();
       navigate("/success");
     }
     console.log(datas);
+  };
+  const handleordercashondelivery = async () => {
+    console.log(productss)
+    let datas = {
+      userId: user._id,
+      email: user.email,
+      mobile: phoneNos,
+      productDetails: productss,
+      paymentDetails: {
+        order_id: "",
+        order_amount: totalPrice,
+        payment_amount: totalPrice,
+        payment_method: "Cash On Delivery",
+        payment_currency: "INR",
+        payment_group: "Cash On Delivery",
+        payment_status: "Pending",
+      },
+      shipping_status: "shipping soon",
+      shipping_Address: {
+        address: addresss,
+        city: citys,
+        state: states,
+        country: countrys,
+        pin: pins,
+      },
+    };
+    const dataResponse = await fetch(SummaryApi.uploadorder.url, {
+      method: SummaryApi.uploadorder.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(datas),
+    });
+
+    const dataApis = await dataResponse.json();
+    if (dataApis) {
+      console.log(dataApis);
+      fetchUserAddToCart();
+      navigate("/success");
+    }
   };
   return (
     <div className="container mx-auto">
@@ -317,8 +357,9 @@ const Cart = () => {
       {/**Payments */}
       {openpaymentoption && (
         <PaymentMethod
-          setpaymentMethod={setpaymentMethod}
+         
           handlePaymentverify={handlePaymentverify}
+          handleordercashondelivery={handleordercashondelivery}
           onClose={() => setOpenpaymentoption(false)}
         />
       )}
