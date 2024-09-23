@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import SummaryApi from "../common";
 import moment from "moment";
 import displayINRCurrency from "../helpers/displayCurrency";
+import TrackOrder from "../Components/TrackOrder";
 
 const OrderPage = () => {
   const [data, setData] = useState([]);
-
+  const [tracksorders, settracksorders] = useState(false);
   const fetchOrderDetails = async () => {
     const response = await fetch(SummaryApi.getOrder.url, {
       method: SummaryApi.getOrder.method,
@@ -33,6 +34,12 @@ const OrderPage = () => {
           return (
             <div key={item.userId + index}>
               <section className="py-10 relative">
+                {tracksorders && (
+                  <TrackOrder
+                  item={item}
+                    onClose={() => settracksorders(false)}
+                  />
+                )}
                 <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
                   <div className="main-box border bg-white border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
                     <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
@@ -51,7 +58,10 @@ const OrderPage = () => {
                           </span>
                         </p>
                       </div>
-                      <button className="rounded-full py-3 px-7 font-semibold text-sm leading-7 text-white bg-indigo-600 max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400">
+                      <button
+                        className="rounded-full py-3 px-7 font-semibold text-sm leading-7 text-white bg-indigo-600 max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500 hover:bg-indigo-700 hover:shadow-indigo-400"
+                        onClick={() => settracksorders(true)}
+                      >
                         Track Your Order
                       </button>
                     </div>
@@ -157,30 +167,33 @@ const OrderPage = () => {
                             Shipping Address
                           </span>
                           <br />
-                          Address{":"}
+                          Address{" : "}
                           <span className="text-gray-500">
                             {item.shipping_Address.address}
                           </span>
                           <br />
-                          Country{":"}
+                          Country{" : "}
                           <span className="text-gray-500">
                             {item.shipping_Address.country}
                           </span>
                           {"  ,"}
-                          State{":"}
+                          State{" : "}
                           <span className="text-gray-500">
                             {item.shipping_Address.state}
                           </span>
                           {"  ,"}
-                          City{":"}
+                          City{" : "}
                           <span className="text-gray-500">
                             {item.shipping_Address.city}
                           </span>
                           {"  ,"}
-                          Pin Code{":"}
+                          Pin Code{" : "}
                           <span className="text-gray-500">
                             {item.shipping_Address.pin}
                           </span>
+                          <br />
+                          Mobile Number{" : "}
+                          <span className="text-gray-500">{item.mobile}</span>
                         </p>
                       </div>
                       <p className="font-semibold text-lg text-black py-6 border-l border-gray-200">

@@ -34,8 +34,6 @@ const PaymentMethod = ({setpaymentMethod, onClose,handleordercashondelivery, han
     e.preventDefault();
     if (payments == "Cash On Delivery") {
       handleordercashondelivery()
-      console.log("casjbi iwbeibwe iwebiwefbr");
-      setpaymentMethod(payments);
       onClose();
       return
     }
