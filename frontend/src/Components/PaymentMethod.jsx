@@ -26,7 +26,6 @@ const PaymentMethod = ({
 
       const res = await response.json();
       if (res && res.payment_session_id) {
-        console.log(res);
         orderids = res.order_id;
         return res.payment_session_id;
       }
@@ -47,7 +46,6 @@ const PaymentMethod = ({
         paymentSessionId: sessionId,
         redirectTarget: "_modal",
       };
-      console.log(checkoutOptions);
       cashfree.checkout(checkoutOptions).then((result) => {
         if (result.error) {
           console.log(

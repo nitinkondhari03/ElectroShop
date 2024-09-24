@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
-import loginIcons from "../assets/signin.gif";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
-import Context from "../context";
 import GoogleAuth from "../Components/GoogleAuth";
 import { showUser } from "../store/userSlice/userSlice";
 import { showCart } from "../store/cartSlice/cartSlice";
+import LoadingButton from "../Components/LoadingButton";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -106,10 +105,10 @@ const Login = () => {
                 Forgot password ?
               </Link>
             </div>
-
-            <button className="bg-cyan-800 text-white p-2 rounded-lg uppercase hover:opacity-95 hover:bg-cyan-900 disabled:opacity-80">
-              Login
-            </button>
+            {isLoading ? <LoadingButton /> :
+              <button className="bg-cyan-800 text-white p-2 rounded-lg uppercase hover:opacity-95 hover:bg-cyan-900 disabled:opacity-80">
+                Login
+              </button>}
             <h1 className="text-center">OR</h1>
             <GoogleAuth />
           </form>

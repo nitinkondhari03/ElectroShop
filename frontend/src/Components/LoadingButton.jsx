@@ -6,7 +6,7 @@ const LoadingButton = () => {
       <button
         disabled="true"
         type="button"
-        className="bg-slate-700 w-full text-white p-2 rounded-lg hover:opacity-95 disabled:opacity-80 mt-6 text-center"
+        className="bg-cyan-800 w-full text-white p-2 rounded-lg hover:opacity-95 disabled:opacity-80 mt-6 text-center hover:bg-cyan-900"
       >
         <svg
           aria-hidden="true"

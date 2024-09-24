@@ -47,37 +47,21 @@ const Profile = () => {
               </dd>
             </div>
             <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">
-                Phone number
-              </dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                8850841724
-              </dd>
-            </div>
-            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Address</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                Maharashtra-Palghar
-                <br />
-                Talasari-401606
-              </dd>
-            </div>
-            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <Link
                 to="/order"
-                className="bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-center"
+                className="bg-cyan-800 hover:bg-cyan-900 text-white rounded-lg text-center"
               >
                 <button>My Orders</button>
               </Link>
               <Link
                 to="/updateProfile"
-                className="bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-center"
+                className="bg-cyan-800 hover:bg-cyan-900 text-white rounded-lg text-center"
               >
                 <button>Update Profile</button>
               </Link>
               <Link
                 to="/changePassword"
-                className="bg-slate-700 hover:bg-slate-800 text-white rounded-lg text-center"
+                className="bg-cyan-800 hover:bg-cyan-900 text-white rounded-lg text-center"
               >
                 <button>Change Password</button>
               </Link>

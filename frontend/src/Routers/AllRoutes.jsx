@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
-import Footer from "../Components/Footer";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import ForgotPassowrd from "../Pages/ForgotPassowrd";
@@ -20,31 +19,34 @@ import Profile from "../Pages/Profile";
 import ResetPassword from "../Pages/ResetPassword";
 import ChangePassword from "../Pages/ChangePassword";
 import UpdateProfile from "../Pages/UpdateProfile";
+import Protected from "./Protectedroutes";
+import PageNotFound from "../Pages/PageNotFound";
+import NotProtected from "./NotProtected";
 const AllRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/forgot-password" element={<ForgotPassowrd />} />
-        <Route path="/resetPassword/:id" element={<ResetPassword/>}/>
-        <Route path="/changePassword" element={<ChangePassword/>}/>
+        <Route path="/login" element={<NotProtected><Login/></NotProtected>} />
+        <Route path="/sign-up" element={<NotProtected><SignUp /></NotProtected>} />
+        <Route path="/forgot-password" element={<NotProtected><ForgotPassowrd/></NotProtected>} />
+        <Route path="/resetPassword/:id" element={<ResetPassword />} />
         <Route path="/product-category" element={<CategoryProduct />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/changePassword" element={<Protected><ChangePassword /></Protected>}/>
+        <Route path="/cart" element={<Protected><Cart /></Protected>}/>
         <Route path="/search" element={<SearchProduct />} />
-        <Route path="/cancel" element={<Cancel />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/updateProfile" element={<UpdateProfile/>}/>
-        
+        <Route path="/cancel" element={<Protected><Cancel /></Protected>}/>
+        <Route path="/success" element={<Protected><Success /></Protected>}/>
+        <Route path="/order" element={ <Protected> <OrderPage /></Protected>}/>
+        <Route path="/profile" element={<Protected><Profile /></Protected>}/>
+        <Route path="/updateProfile" element={<Protected><UpdateProfile /></Protected>}/>
         <Route path="/admin-panel" element={<AdminPanel />}>
           <Route path="all-users" element={<AllUsers />} />
           <Route path="all-products" element={<AllProducts />} />
           <Route path="all-orders" element={<AllOrder />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

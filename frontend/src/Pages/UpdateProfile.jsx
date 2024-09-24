@@ -109,7 +109,7 @@ const UpdateProfile = () => {
               {isLoading ? (
                 <LoadingButton />
               ) : (
-                <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-6">
+                <button className="bg-cyan-800 hover:bg-cyan-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-6">
                   Update Profile
                 </button>
               )}

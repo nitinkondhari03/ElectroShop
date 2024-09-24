@@ -12,7 +12,6 @@ import ROLE from "../common/role";
 const Header = () => {
   const { user, isAuthenticated } = useSelector((state) => state?.user);
   const { cart } = useSelector((state) => state?.cart);
-  console.log(cart);
   const dispatch = useDispatch();
   const [menuDisplay, setMenuDisplay] = useState(false);
   const navigate = useNavigate();

@@ -40,7 +40,7 @@ const ChangePassword = () => {
         },
         body: JSON.stringify({
           password: data.password,
-          oldpassword:data.oldpassword
+          oldpassword: data.oldpassword,
         }),
       });
 
@@ -48,7 +48,7 @@ const ChangePassword = () => {
       if (dataApi.success) {
         toast.success(dataApi.message);
         setisLoading(false);
-        navigate("/")
+        navigate("/");
       }
 
       if (dataApi.error) {
@@ -138,12 +138,11 @@ const ChangePassword = () => {
               {isLoading ? (
                 <LoadingButton />
               ) : (
-                <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-6">
-                   Change Password
+                <button className="bg-cyan-800 hover:bg-cyan-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-6">
+                  Change Password
                 </button>
               )}
             </form>
-           
           </div>
         </div>
       </section>

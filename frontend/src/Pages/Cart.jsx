@@ -8,7 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showCart } from "../store/cartSlice/cartSlice";
 const Cart = () => {
-  const user = useSelector((state) => state?.user?.user);
+  const { user } = useSelector((state) => state?.user);
+  const { cart } = useSelector((state) => state?.cart);
   const dispatch = useDispatch();
   const [openAddress, setOpenAddress] = useState(false);
   const [openpaymentoption, setOpenpaymentoption] = useState(false);
@@ -18,44 +19,9 @@ const Cart = () => {
   const [pins, setpins] = useState("");
   const [states, setstates] = useState("");
   const [phoneNos, setPhoneNos] = useState("");
-  const [productss, setproductss] = useState("");
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadingCart = new Array(4).fill(null);
   const navigate = useNavigate();
-  const fetchData = async () => {
-    const response = await fetch(SummaryApi.addToCartProductView.url, {
-      method: SummaryApi.addToCartProductView.method,
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-    });
-
-    const responseData = await response.json();
-
-    if (responseData.success) {
-      setData(responseData.data);
-      let x = responseData.data;
-      let m = [];
-      for (let i = 0; i < x.length; i++) {
-        m.push(x[i].productId);
-      }
-      setproductss(responseData.data);
-      console.log(m);
-      console.log(responseData.data);
-    }
-  };
-
-  const handleLoading = async () => {
-    await fetchData();
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    handleLoading();
-    setLoading(false);
-  }, []);
 
   const increaseQty = async (id, qty) => {
     const response = await fetch(SummaryApi.updateCartProduct.url, {
@@ -73,7 +39,7 @@ const Cart = () => {
     const responseData = await response.json();
 
     if (responseData.success) {
-      fetchData();
+      dispatch(showCart());
     }
   };
 
@@ -94,7 +60,7 @@ const Cart = () => {
       const responseData = await response.json();
 
       if (responseData.success) {
-        fetchData();
+        dispatch(showCart());
       }
     }
   };
@@ -114,16 +80,15 @@ const Cart = () => {
     const responseData = await response.json();
 
     if (responseData.success) {
-      fetchData();
       dispatch(showCart());
     }
   };
 
-  const totalQty = data.reduce(
+  const totalQty = cart?.reduce(
     (previousValue, currentValue) => previousValue + currentValue.quantity,
     0
   );
-  const totalPrice = data.reduce(
+  const totalPrice = cart?.reduce(
     (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
     0
   );
@@ -140,19 +105,17 @@ const Cart = () => {
 
       const dataApi = await dataResponse.json();
 
-      console.log(dataApi);
       handleorder({ dataApi });
     } catch (error) {
       console.log(error);
     }
   };
   const handleorder = async ({ dataApi }) => {
-    console.log(dataApi);
     let datas = {
       userId: user._id,
       email: user.email,
       mobile: phoneNos,
-      productDetails: productss,
+      productDetails: cart,
       paymentDetails: {
         order_id: dataApi[0].order_id,
         order_amount: dataApi[0].order_amount,
@@ -181,20 +144,17 @@ const Cart = () => {
     });
 
     const dataApis = await dataResponse.json();
-    console.log(dataApi);
     if (dataApi[0].payment_status == "SUCCESS") {
       dispatch(showCart());
       navigate("/success");
     }
-    console.log(datas);
   };
   const handleordercashondelivery = async () => {
-    console.log(productss);
     let datas = {
       userId: user._id,
       email: user.email,
       mobile: phoneNos,
-      productDetails: productss,
+      productDetails: cart,
       paymentDetails: {
         order_id: "",
         order_amount: totalPrice,
@@ -224,7 +184,6 @@ const Cart = () => {
 
     const dataApis = await dataResponse.json();
     if (dataApis) {
-      console.log(dataApis);
       dispatch(showCart());
       navigate("/success");
     }
@@ -232,7 +191,7 @@ const Cart = () => {
   return (
     <div className="container mx-auto">
       <div className="text-center text-lg my-3">
-        {data.length === 0 && !loading && (
+        {cart?.length === 0 && !loading && (
           <p className="bg-white py-5">No Data</p>
         )}
       </div>
@@ -249,7 +208,7 @@ const Cart = () => {
                   ></div>
                 );
               })
-            : data?.map((product, index) => {
+            : cart?.map((product, index) => {
                 return (
                   <div
                     key={product?._id + "Add To Cart Loading"}
@@ -312,7 +271,7 @@ const Cart = () => {
         </div>
 
         {/***summary  */}
-        {data[0] && (
+        {!cart?.length==0 && (
           <div className="mt-5 lg:mt-0 w-full max-w-sm">
             {loading ? (
               <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>

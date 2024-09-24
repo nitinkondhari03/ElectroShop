@@ -50,9 +50,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
     let x = data.productImage[index];
     const segment = x.substring(x.lastIndexOf("/") + 1);
     const m = segment.substring(0, segment.lastIndexOf("."));
-    console.log(m);
     let publicId = `Products Images/${m}`;
-    console.log(publicId);
     const dataResponse = await fetch(SummaryApi.cloudinaryDelete.url, {
       method: SummaryApi.cloudinaryDelete.method,
       credentials: "include",
@@ -64,7 +62,6 @@ const UploadProduct = ({ onClose, fetchData }) => {
       }),
     });
     const dataApi = await dataResponse.json();
-    console.log(dataApi);
     setData((preve) => {
       return {
         ...preve,
@@ -89,7 +86,6 @@ const UploadProduct = ({ onClose, fetchData }) => {
     });
 
     const responseData = await response.json();
-    console.log(responseData);
     if (responseData.success) {
       toast.success(responseData?.message);
       onClose();

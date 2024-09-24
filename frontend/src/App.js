@@ -10,6 +10,7 @@ import { showCart } from "./store/cartSlice/cartSlice.js";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(showUser());
     dispatch(showCart());
