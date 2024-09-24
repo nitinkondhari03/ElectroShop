@@ -162,7 +162,7 @@ const CategoryProduct = () => {
         </div>
 
         {/***right side ( product ) */}
-        <div className="px-4 flex-none w-full sm:flex-auto sm:w-auto">
+        <div className="px-4 flex-none w-full sm:flex-auto sm:w-auto fixed sm:relative">
           <p className="font-medium invisible sm:visible text-slate-800 text-lg my-2">
             <p>Search Results : {data.length}</p>
           </p>
@@ -180,7 +180,7 @@ const CategoryProduct = () => {
               />
             </p>
           </p>
-          {filters ? (
+          {filters && (
             <div className="bg-white sm:hidden p-2 min-h-[calc(100vh-120px)] overflow-y-scroll">
               {/**sort by */}
               <div className="">
@@ -247,12 +247,6 @@ const CategoryProduct = () => {
                   Filter
                 </button>
               </div>
-            </div>
-          ) : (
-            <div className="min-h-[calc(100vh-120px)] sm:hidden overflow-y-scroll max-h-[calc(100vh-120px)]">
-              {data.length !== 0 && !loading && (
-                <VerticalCard data={data} loading={loading} />
-              )}
             </div>
           )}
           <div className="min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]">
