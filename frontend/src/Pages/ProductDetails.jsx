@@ -8,8 +8,10 @@ import VerticalCardProduct from "../Components/VerticalCardProduct";
 import CategroyWiseProductDisplay from "../Components/CategoryWiseProductDisplay";
 import addToCart from "../helpers/addToCart";
 import Context from "../context";
-
+import { useDispatch, useSelector } from "react-redux";
+import { showCart } from "../store/cartSlice/cartSlice";
 const ProductDetails = () => {
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     productName: "",
     brandName: "",
@@ -29,8 +31,6 @@ const ProductDetails = () => {
     y: 0,
   });
   const [zoomImage, setZoomImage] = useState(false);
-
-  const { fetchUserAddToCart } = useContext(Context);
 
   const navigate = useNavigate();
 
@@ -82,12 +82,12 @@ const ProductDetails = () => {
 
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
-    fetchUserAddToCart();
+    dispatch(showCart());
   };
 
   const handleBuyProduct = async (e, id) => {
     await addToCart(e, id);
-    fetchUserAddToCart();
+    dispatch(showCart());
     navigate("/cart");
   };
 

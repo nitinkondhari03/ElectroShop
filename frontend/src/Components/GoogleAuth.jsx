@@ -2,13 +2,15 @@ import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { app } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import Context from "../context";
 import SummaryApi from "../common";
-import React, { useState, useContext } from "react";
+import React, { useState} from "react";
+import { showUser } from "../store/userSlice/userSlice.js";
+import { useDispatch} from "react-redux";
+import { showCart } from "../store/cartSlice/cartSlice.js";
 export default function GoogleAuth() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setisLoading] = useState(false);
-  const { fetchUserDetails, fetchUserAddToCart } = useContext(Context);
   const handleGoogleClick = async () => {
     setisLoading(true);
     try {
@@ -33,8 +35,8 @@ export default function GoogleAuth() {
       });
       const data = await res.json();
       if (data.success) {
-        fetchUserDetails();
-        fetchUserAddToCart();
+        dispatch(showUser());
+        dispatch(showCart());
         setisLoading(false);
         toast.success(data.message);
         navigate("/");

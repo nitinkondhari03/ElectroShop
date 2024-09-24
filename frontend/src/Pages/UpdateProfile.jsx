@@ -5,7 +5,7 @@ import SummaryApi from "../common";
 import { toast } from "react-toastify";
 import LoadingButton from "../Components/LoadingButton";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserDetails } from "../store/userSlice";
+import { showUser } from "../store/userSlice/userSlice";
 const UpdateProfile = () => {
   const user = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
@@ -39,18 +39,7 @@ const UpdateProfile = () => {
       };
     });
   };
-  const fetchUserDetails = async () => {
-    const dataResponse = await fetch(SummaryApi.current_user.url, {
-      method: SummaryApi.current_user.method,
-      credentials: "include",
-    });
 
-    const dataApi = await dataResponse.json();
-
-    if (dataApi.success) {
-      dispatch(setUserDetails(dataApi.data));
-    }
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setisLoading(true);
@@ -68,7 +57,7 @@ const UpdateProfile = () => {
     if (dataApi.success) {
       toast.success(dataApi.message);
       setisLoading(false);
-      fetchUserDetails()
+      dispatch(showUser());
       navigate("/profile");
     }
 

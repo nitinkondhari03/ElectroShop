@@ -4,9 +4,10 @@ import displayINRCurrency from "../helpers/displayCurrency";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import addToCart from "../helpers/addToCart";
-import Context from "../context";
-
+import { useDispatch} from "react-redux";
+import { showCart } from "../store/cartSlice/cartSlice";
 const HorizontalCardProduct = ({ category, heading }) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const loadingList = new Array(13).fill(null);
@@ -14,11 +15,10 @@ const HorizontalCardProduct = ({ category, heading }) => {
   const [scroll, setScroll] = useState(0);
   const scrollElement = useRef();
 
-  const { fetchUserAddToCart } = useContext(Context);
 
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
-    fetchUserAddToCart();
+    dispatch(showCart())
   };
 
   const fetchData = async () => {
@@ -63,7 +63,10 @@ const HorizontalCardProduct = ({ category, heading }) => {
         {loading
           ? loadingList?.map((product, index) => {
               return (
-                <div key={index} className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex">
+                <div
+                  key={index}
+                  className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
+                >
                   <div className="bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px] animate-pulse"></div>
                   <div className="p-4 grid w-full gap-2">
                     <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black bg-slate-200 animate-pulse p-1 rounded-full"></h2>

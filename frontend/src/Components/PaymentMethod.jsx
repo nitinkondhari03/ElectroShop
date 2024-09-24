@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
-import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
 import SummaryApi from "../common";
-const PaymentMethod = ({setpaymentMethod, onClose,handleordercashondelivery, handlePaymentverify }) => {
+const PaymentMethod = ({
+  setpaymentMethod,
+  onClose,
+  handleordercashondelivery,
+  handlePaymentverify,
+}) => {
   const [payments, setpayments] = useState("");
   let orderids;
   let cashfree;
@@ -23,7 +27,7 @@ const PaymentMethod = ({setpaymentMethod, onClose,handleordercashondelivery, han
       const res = await response.json();
       if (res && res.payment_session_id) {
         console.log(res);
-        orderids=res.order_id;
+        orderids = res.order_id;
         return res.payment_session_id;
       }
     } catch (error) {
@@ -33,9 +37,9 @@ const PaymentMethod = ({setpaymentMethod, onClose,handleordercashondelivery, han
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (payments == "Cash On Delivery") {
-      handleordercashondelivery()
+      handleordercashondelivery();
       onClose();
-      return
+      return;
     }
     try {
       let sessionId = await getSessionId();

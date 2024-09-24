@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
-import Context from "../context";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
 import PaymentMethod from "../Components/PaymentMethod";
 import OrderAddress from "../Components/OrderAddress";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { showCart } from "../store/cartSlice/cartSlice";
 const Cart = () => {
   const user = useSelector((state) => state?.user?.user);
+  const dispatch = useDispatch();
   const [openAddress, setOpenAddress] = useState(false);
   const [openpaymentoption, setOpenpaymentoption] = useState(false);
   const [addresss, setaddresss] = useState("");
@@ -20,9 +21,7 @@ const Cart = () => {
   const [productss, setproductss] = useState("");
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const context = useContext(Context);
   const loadingCart = new Array(4).fill(null);
-  const { fetchUserAddToCart } = useContext(Context);
   const navigate = useNavigate();
   const fetchData = async () => {
     const response = await fetch(SummaryApi.addToCartProductView.url, {
@@ -42,8 +41,9 @@ const Cart = () => {
       for (let i = 0; i < x.length; i++) {
         m.push(x[i].productId);
       }
-      setproductss(m);
-      console.log(m)
+      setproductss(responseData.data);
+      console.log(m);
+      console.log(responseData.data);
     }
   };
 
@@ -115,7 +115,7 @@ const Cart = () => {
 
     if (responseData.success) {
       fetchData();
-      context.fetchUserAddToCart();
+      dispatch(showCart());
     }
   };
 
@@ -183,13 +183,13 @@ const Cart = () => {
     const dataApis = await dataResponse.json();
     console.log(dataApi);
     if (dataApi[0].payment_status == "SUCCESS") {
-      fetchUserAddToCart();
+      dispatch(showCart());
       navigate("/success");
     }
     console.log(datas);
   };
   const handleordercashondelivery = async () => {
-    console.log(productss)
+    console.log(productss);
     let datas = {
       userId: user._id,
       email: user.email,
@@ -225,7 +225,7 @@ const Cart = () => {
     const dataApis = await dataResponse.json();
     if (dataApis) {
       console.log(dataApis);
-      fetchUserAddToCart();
+      dispatch(showCart());
       navigate("/success");
     }
   };
@@ -357,7 +357,6 @@ const Cart = () => {
       {/**Payments */}
       {openpaymentoption && (
         <PaymentMethod
-         
           handlePaymentverify={handlePaymentverify}
           handleordercashondelivery={handleordercashondelivery}
           onClose={() => setOpenpaymentoption(false)}

@@ -5,17 +5,16 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import SummaryApi from "../common";
 import { toast } from "react-toastify";
-import { setUserDetails } from "../store/userSlice";
+import { logoutUser } from "../store/userSlice/userSlice";
 import ROLE from "../common/role";
-import Context from "../context";
 
 const Header = () => {
-  const user = useSelector((state) => state?.user?.user);
+  const { user, isAuthenticated } = useSelector((state) => state?.user);
+  const { cart } = useSelector((state) => state?.cart);
+  console.log(cart);
   const dispatch = useDispatch();
   const [menuDisplay, setMenuDisplay] = useState(false);
-  const context = useContext(Context);
   const navigate = useNavigate();
   const searchInput = useLocation();
   const URLSearch = new URLSearchParams(searchInput?.search);
@@ -23,34 +22,23 @@ const Header = () => {
   const [search, setSearch] = useState(searchQuery);
 
   const handleLogout = async () => {
-    const fetchData = await fetch(SummaryApi.logout_user.url, {
-      method: SummaryApi.logout_user.method,
-      credentials: "include",
-    });
-
-    const data = await fetchData.json();
-
-    if (data.success) {
-      toast.success(data.message);
-      dispatch(setUserDetails(null));
+    dispatch(logoutUser());
+    if (!isAuthenticated) {
+      toast.success("Logout Successful");
       navigate("/");
-    }
-
-    if (data.error) {
-      toast.error(data.message);
     }
   };
 
   const handleSearch = (e) => {
     const { value } = e.target;
     setSearch(value);
-
     if (value) {
       navigate(`/search?q=${value}`);
     } else {
       navigate("/search");
     }
   };
+
   return (
     <header className="h-16 shadow-md bg-white fixed w-full z-40">
       <div className=" h-full container mx-auto flex items-center px-4 justify-between">
@@ -103,7 +91,6 @@ const Header = () => {
                       >
                         Admin Panel
                       </Link>
-                      
                     )}
                     {user && (
                       <Link
@@ -120,7 +107,7 @@ const Header = () => {
                       className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
                       onClick={() => setMenuDisplay((preve) => !preve)}
                     >
-                     Your Order
+                      Your Order
                     </Link>
                   </nav>
                 </div>
@@ -135,7 +122,7 @@ const Header = () => {
               </span>
 
               <div className="bg-cyan-800 text-white w-5 h-5 rounded-full p-1 flex items-center justify-center absolute -top-2 -right-3">
-                <p className="text-sm">{context?.cartProductCount}</p>
+                <p className="text-sm">{cart ? cart?.length : 0}</p>
               </div>
             </Link>
           )}

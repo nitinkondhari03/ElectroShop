@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 const AdminProductCard = ({ data, fetchdata }) => {
   const [editProduct, setEditProduct] = useState(false);
   const navigate = useNavigate();
-  console.log(data);
   const handleDelete = async (e, id) => {
     e.preventDefault();
     const dataResponse = await fetch(SummaryApi.DeleteProduct.url, {

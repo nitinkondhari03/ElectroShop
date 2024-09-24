@@ -1,16 +1,11 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserDetails } from "../store/userSlice";
-import ROLE from "../common/role";
-import Context from "../context";
+import { useSelector } from "react-redux";
 import { getRandomColor, createImageFromInitials } from "../Components/Utils";
+
 const Profile = () => {
-  let name = "Jhon";
   let imgSrc = "";
   const user = useSelector((state) => state?.user?.user);
-  const dispatch = useDispatch();
-  const context = useContext(Context);
   return (
     <>
       <h1 className="text-2xl mt-5 font-medium text-gray-900 text-center">

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import loginIcons from "../assets/signin.gif";
+import { useDispatch, useSelector } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,8 +8,11 @@ import SummaryApi from "../common";
 import { toast } from "react-toastify";
 import Context from "../context";
 import GoogleAuth from "../Components/GoogleAuth";
+import { showUser } from "../store/userSlice/userSlice";
+import { showCart } from "../store/cartSlice/cartSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
   const [data, setData] = useState({
@@ -16,7 +20,6 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const { fetchUserDetails, fetchUserAddToCart } = useContext(Context);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -47,8 +50,8 @@ const Login = () => {
       setisLoading(false);
       toast.success(dataApi.message);
       navigate("/");
-      fetchUserDetails();
-      fetchUserAddToCart();
+      dispatch(showUser());
+      dispatch(showCart());
     }
 
     if (dataApi.error) {
@@ -57,7 +60,6 @@ const Login = () => {
     }
     setisLoading(false);
   };
-
 
   return (
     <section id="login">

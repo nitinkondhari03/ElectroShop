@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SummaryApi from "../common";
-import moment from "moment";
 import displayINRCurrency from "../helpers/displayCurrency";
 import TrackOrder from "../Components/TrackOrder";
 
@@ -36,7 +35,7 @@ const OrderPage = () => {
               <section className="py-10 relative">
                 {tracksorders && (
                   <TrackOrder
-                  item={item}
+                    item={item}
                     onClose={() => settracksorders(false)}
                   />
                 )}
@@ -74,7 +73,7 @@ const OrderPage = () => {
                           >
                             <div className="img-box max-lg:w-full">
                               <img
-                                src={items.productImage[0]}
+                                src={items.productId.productImage[0]}
                                 alt="Diamond Watch image"
                                 className="aspect-square w-full lg:max-w-[140px] rounded-xl"
                               />
@@ -98,7 +97,9 @@ const OrderPage = () => {
                                       </p>
                                       <p className="font-medium text-base leading-7 text-black ">
                                         Qty:{" "}
-                                        <span className="text-gray-500">1</span>
+                                        <span className="text-gray-500">
+                                          {items.quantity}
+                                        </span>
                                       </p>
                                     </div>
                                   </div>
@@ -110,7 +111,7 @@ const OrderPage = () => {
                                         price
                                       </p>
                                       <p className="lg:mt-4 font-medium text-sm leading-7 text-indigo-600">
-                                        {displayINRCurrency(items.sellingPrice)}
+                                        {displayINRCurrency(items.productId.sellingPrice)}
                                       </p>
                                     </div>
                                   </div>
