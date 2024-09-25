@@ -34,7 +34,8 @@ const payment = async (req, res) => {
         res.json(response.data);
       })
       .catch((error) => {
-        console.log("error.response.data.message", error.response.data.message);
+        console.log("error.response.data.message", error.response.data.message); 
+        res.json("error.response.data.message", error.response.data.message);
       });
   } catch (error) {
     res.json({
