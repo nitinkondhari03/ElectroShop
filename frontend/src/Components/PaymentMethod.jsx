@@ -17,6 +17,7 @@ const PaymentMethod = ({
   };
   initializeSDK();
   const getSessionId = async () => {
+    console.log("getSessionId")
     try {
       const response = await fetch(SummaryApi.payments.url, {
         method: SummaryApi.payments.method,
@@ -24,8 +25,10 @@ const PaymentMethod = ({
       });
 
       const res = await response.json();
+      console.log(`res ${res}`)
       if (res && res.payment_session_id) {
         orderids = res.order_id;
+        console.log(orderids)
         return res.payment_session_id;
       }
     } catch (error) {
@@ -41,6 +44,7 @@ const PaymentMethod = ({
     }
     try {
       let sessionId = await getSessionId();
+      console.log(`sessionId ${sessionId}`)
       let checkoutOptions = {
         paymentSessionId: sessionId,
         redirectTarget: "_modal",
