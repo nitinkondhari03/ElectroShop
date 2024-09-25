@@ -27,9 +27,9 @@ const AllRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<NotProtected><Login/></NotProtected>} />
-        <Route path="/sign-up" element={<NotProtected><SignUp /></NotProtected>} />
-        <Route path="/forgot-password" element={<NotProtected><ForgotPassowrd/></NotProtected>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassowrd/>} />
         <Route path="/resetPassword/:id" element={<ResetPassword />} />
         <Route path="/product-category" element={<CategoryProduct />} />
         <Route path="/product/:id" element={<ProductDetails />} />
