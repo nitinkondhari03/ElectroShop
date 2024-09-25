@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { load } from "@cashfreepayments/cashfree-js";
 import SummaryApi from "../common";
+import LoadingButton from "./LoadingButton";
 const PaymentMethod = ({
   onClose,
   handleordercashondelivery,
   handlePaymentverify,
 }) => {
+  const [isLoading, setisLoading] = useState(false);
   const [payments, setpayments] = useState("");
   let orderids;
   let cashfree;
@@ -17,8 +19,6 @@ const PaymentMethod = ({
   };
   initializeSDK();
   const getSessionId = async () => {
-    console.log("getSessionId")
-    console.log(SummaryApi.payments.url)
     try {
       const response = await fetch(SummaryApi.payments.url, {
         method: SummaryApi.payments.method,
@@ -26,27 +26,25 @@ const PaymentMethod = ({
       });
 
       const res = await response.json();
-      console.log(`res ${res}`)
       if (res && res.payment_session_id) {
         orderids = res.order_id;
-        console.log(orderids)
         return res.payment_session_id;
       }
     } catch (error) {
       console.log(error);
-      console.log("error")
     }
   };
   const handleSubmit = async (e) => {
+    setisLoading(true);
     e.preventDefault();
     if (payments == "Cash On Delivery") {
       handleordercashondelivery();
+      setisLoading(false);
       onClose();
       return;
     }
     try {
       let sessionId = await getSessionId();
-      console.log(`sessionId ${sessionId}`)
       let checkoutOptions = {
         paymentSessionId: sessionId,
         redirectTarget: "_modal",
@@ -57,20 +55,23 @@ const PaymentMethod = ({
             "User has closed the popup or there is some payment error, Check for Payment Status"
           );
           console.log(result.error);
+          setisLoading(false);
         }
         if (result.redirect) {
           console.log("Payment will be redirected");
+          setisLoading(false);
         }
         if (result.paymentDetails) {
           console.log("Payment has been completed, Check for Payment Status");
           console.log(result.paymentDetails.paymentMessage);
           console.log(result);
           handlePaymentverify(orderids);
-          
+          setisLoading(false);
           onClose();
         }
       });
     } catch (error) {
+      setisLoading(false);
       console.log(error);
     }
   };
@@ -125,11 +126,14 @@ const PaymentMethod = ({
               className="text-green-800"
             />
             {"  "}Other Payment Method
-          </label>
-
-          <button className=" bg-cyan-800 text-white mt-3 hover:bg-cyan-900 p-4">
-            Payment
-          </button>
+          </label>{" "}
+          {isLoading ? (
+            <LoadingButton />
+          ) : (
+            <button className="bg-cyan-800 text-white mt-3 hover:bg-cyan-900 p-4">
+              Payment
+            </button>
+          )}
         </form>
       </div>
     </div>

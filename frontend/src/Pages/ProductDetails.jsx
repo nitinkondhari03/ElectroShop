@@ -87,10 +87,7 @@ const ProductDetails = () => {
   const handleBuyProduct = async (e, id) => {
     await addToCart(e, id);
     dispatch(showCart());
-    if (isAuthenticated) {
-      navigate("/cart");
-    }
-    navigate("/login");
+    navigate("/cart");
   };
 
   return (
