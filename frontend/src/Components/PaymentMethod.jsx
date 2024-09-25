@@ -18,6 +18,7 @@ const PaymentMethod = ({
   initializeSDK();
   const getSessionId = async () => {
     console.log("getSessionId")
+    console.log(SummaryApi.payments.url)
     try {
       const response = await fetch(SummaryApi.payments.url, {
         method: SummaryApi.payments.method,
@@ -33,6 +34,7 @@ const PaymentMethod = ({
       }
     } catch (error) {
       console.log(error);
+      console.log("error")
     }
   };
   const handleSubmit = async (e) => {
