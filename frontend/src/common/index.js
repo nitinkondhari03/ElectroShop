@@ -1,4 +1,4 @@
-const backendDomin = "https://mern-a77g.onrender.com";
+const backendDomin = "http://localhost:8080";
 //https://mern-a77g.onrender.com
 //http://localhost:8080
 const SummaryApi = {
