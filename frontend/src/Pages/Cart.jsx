@@ -94,7 +94,7 @@ const Cart = () => {
     0
   );
   const handlePaymentverify = async (orderids) => {
-    setisLoading(true)
+    setisLoading(true);
     try {
       const dataResponse = await fetch(SummaryApi.paymentverify.url, {
         method: SummaryApi.paymentverify.method,
@@ -105,15 +105,15 @@ const Cart = () => {
         body: JSON.stringify({ orderId: orderids }),
       });
       const dataApi = await dataResponse.json();
-      setLoading(false)
+      setLoading(false);
       handleorder({ dataApi });
     } catch (error) {
       console.log(error);
-      setLoading(false)
+      setLoading(false);
     }
   };
   const handleorder = async ({ dataApi }) => {
-    setisLoading(true)
+    setisLoading(true);
     let datas = {
       userId: user._id,
       email: user.email,
@@ -149,10 +149,10 @@ const Cart = () => {
     const dataApis = await dataResponse.json();
     if (dataApi[0].payment_status == "SUCCESS") {
       dispatch(showCart());
-      setLoading(false)
+      setLoading(false);
       navigate("/success");
     }
-    setLoading(false)
+    setLoading(false);
   };
   const handleordercashondelivery = async () => {
     let datas = {
@@ -262,12 +262,12 @@ const Cart = () => {
                             {product?.productId.category}
                           </p>
                           <div className="flex items-center justify-between">
-                            <p className="text-green-900 font-medium text-lg">
+                            <p className="text-green-900 font-medium text-sm sm:text-lg">
                               {displayINRCurrency(
                                 product?.productId?.sellingPrice
                               )}
                             </p>
-                            <p className="text-green-900 font-semibold text-lg">
+                            <p className="text-green-900 font-semibold text-sm sm:text-lg">
                               {displayINRCurrency(
                                 product?.productId?.sellingPrice *
                                   product?.quantity

@@ -1,17 +1,20 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import scrollTop from "../helpers/scrollTop";
 import displayINRCurrency from "../helpers/displayCurrency";
 import addToCart from "../helpers/addToCart";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { showCart } from "../store/cartSlice/cartSlice";
+import LoadingButton from "./LoadingButton";
 const VerticalCard = ({ loading, data = [] }) => {
+  const [isLoading, setisLoading] = useState(false);
   const loadingList = new Array(13).fill(null);
-
   const dispatch = useDispatch();
   const handleAddToCart = async (e, id) => {
+    setisLoading(true)
     await addToCart(e, id);
     dispatch(showCart());
+    setisLoading(false)
   };
 
   return (
@@ -65,12 +68,14 @@ const VerticalCard = ({ loading, data = [] }) => {
                       {displayINRCurrency(product?.price)}
                     </p>
                   </div>
+                  {isLoading?
+                  <LoadingButton/>:
                   <button
                     className="text-lg w-full bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2 "
                     onClick={(e) => handleAddToCart(e, product?._id)}
                   >
                     Add to Cart
-                  </button>
+                  </button>}
                 </div>
               </Link>
             );

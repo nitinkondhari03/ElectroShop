@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { showCart } from "../store/cartSlice/cartSlice";
 import LoadingButton from "../Components/LoadingButton";
 
 const Login = () => {
+  const { user, isAuthenticated } = useSelector((state) => state?.user);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
@@ -19,7 +20,12 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+  
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
@@ -105,10 +111,13 @@ const Login = () => {
                 Forgot password ?
               </Link>
             </div>
-            {isLoading ? <LoadingButton /> :
+            {isLoading ? (
+              <LoadingButton />
+            ) : (
               <button className="bg-cyan-800 text-white p-2 rounded-lg uppercase hover:opacity-95 hover:bg-cyan-900 disabled:opacity-80">
                 Login
-              </button>}
+              </button>
+            )}
             <h1 className="text-center">OR</h1>
             <GoogleAuth />
           </form>
