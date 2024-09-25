@@ -1,16 +1,15 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SummaryApi from "../common";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from "../helpers/displayCurrency";
-import VerticalCardProduct from "../Components/VerticalCardProduct";
 import CategroyWiseProductDisplay from "../Components/CategoryWiseProductDisplay";
 import addToCart from "../helpers/addToCart";
-import Context from "../context";
 import { useDispatch, useSelector } from "react-redux";
 import { showCart } from "../store/cartSlice/cartSlice";
 const ProductDetails = () => {
+  const { isAuthenticated } = useSelector((state) => state?.user);
   const dispatch = useDispatch();
   const [data, setData] = useState({
     productName: "",
@@ -88,7 +87,10 @@ const ProductDetails = () => {
   const handleBuyProduct = async (e, id) => {
     await addToCart(e, id);
     dispatch(showCart());
-    navigate("/cart");
+    if (isAuthenticated) {
+      navigate("/cart");
+    }
+    navigate("/login");
   };
 
   return (

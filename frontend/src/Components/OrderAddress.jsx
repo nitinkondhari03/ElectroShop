@@ -33,8 +33,8 @@ const OrderAddress = ({
   return (
     <div className="fixed w-full  h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
       <div className="bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden">
-        <div className="items-center pb-3 text-center">
-          <h1 className="font-bold text-2xl">Shipping Address</h1>
+        <div className="items-center text-center">
+          <h1 className="font-bold text-2xl text-green-800">Shipping Address</h1>
           <div
             className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
             onClick={onClose}
@@ -44,10 +44,10 @@ const OrderAddress = ({
         </div>
 
         <form
-          className="grid p-4 gap-2 overflow-y-scroll h-full pb-5"
+          className="pt-6 flex flex-col p-4 gap-2 overflow-y-scroll h-full"
           onSubmit={handleSubmit}
         >
-          <label htmlFor="sellingPrice" className="mt-3">
+          <label htmlFor="sellingPrice" className="">
             Full Address
           </label>
           <input

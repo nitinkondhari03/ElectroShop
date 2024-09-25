@@ -34,7 +34,7 @@ const AllRoutes = () => {
         <Route path="/product-category" element={<CategoryProduct />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/changePassword" element={<Protected><ChangePassword /></Protected>}/>
-        <Route path="/cart" element={<Protected><Cart /></Protected>}/>
+        <Route path="/cart" element={<Protected><Cart/></Protected>}/>
         <Route path="/search" element={<SearchProduct />} />
         <Route path="/cancel" element={<Protected><Cancel /></Protected>}/>
         <Route path="/success" element={<Protected><Success /></Protected>}/>

@@ -3,7 +3,6 @@ import { CgClose } from "react-icons/cg";
 import { load } from "@cashfreepayments/cashfree-js";
 import SummaryApi from "../common";
 const PaymentMethod = ({
-  setpaymentMethod,
   onClose,
   handleordercashondelivery,
   handlePaymentverify,
@@ -61,7 +60,7 @@ const PaymentMethod = ({
           console.log(result.paymentDetails.paymentMessage);
           console.log(result);
           handlePaymentverify(orderids);
-          setpaymentMethod(payments);
+          
           onClose();
         }
       });
@@ -74,23 +73,23 @@ const PaymentMethod = ({
     setpayments(e.target.value);
   };
   return (
-    <div className="fixed w-full   bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
+    <div className="fixed w-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center">
       <div className="bg-white p-4 rounded w-full max-w-2xl  max-h-[80%] overflow-hidden">
         <div
-          className="w-fit ml-auto text-2xl hover:text-red-600 cursor-pointer"
+          className="w-fit ml-auto text-2xl cursor-pointer"
           onClick={onClose}
         >
           <CgClose />
         </div>
         <div className="text-2xl text-center">
-          <h1 className="font-bold">Select Payment Method</h1>
+          <h1 className="font-bold text-green-800">Select Payment Method</h1>
         </div>
 
         <form className="grid p-10 gap-6  pb-5" onSubmit={handleSubmit}>
           <label
             className={
               payments == "Cash On Delivery"
-                ? "p-2 bg-slate-100 border rounded border-black text-lg font-semibold"
+                ? "p-2 bg-slate-100 border rounded border-green-800 text-lg font-semibold"
                 : "p-2 bg-slate-100 border rounded text-lg font-semibold"
             }
           >
@@ -100,13 +99,14 @@ const PaymentMethod = ({
               value="Cash On Delivery"
               checked={payments === "Cash On Delivery"}
               onChange={handlepaymentsChange}
+              className="text-green-800"
             />
-            Cash On Delivery
+            {"  "}Cash On Delivery
           </label>
           <label
             className={
               payments == "Other Payment Method"
-                ? "p-2 bg-slate-100 border rounded border-black text-lg font-semibold"
+                ? "p-2 bg-slate-100 border rounded border-green-800 text-lg font-semibold"
                 : "p-2 bg-slate-100 border rounded text-lg font-semibold"
             }
           >
@@ -116,8 +116,9 @@ const PaymentMethod = ({
               value="Other Payment Method"
               checked={payments === "Other Payment Method"}
               onChange={handlepaymentsChange}
+              className="text-green-800"
             />
-            Other Payment Method
+            {"  "}Other Payment Method
           </label>
 
           <button className=" bg-cyan-800 text-white mt-3 hover:bg-cyan-900 p-4">
