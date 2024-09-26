@@ -21,7 +21,7 @@ import ChangePassword from "../Pages/ChangePassword";
 import UpdateProfile from "../Pages/UpdateProfile";
 import Protected from "./Protectedroutes";
 import PageNotFound from "../Pages/PageNotFound";
-import NotProtected from "./NotProtected";
+import TrackOrder from "../Pages/TrackOrder";
 const AllRoutes = () => {
   return (
     <div>
@@ -39,6 +39,7 @@ const AllRoutes = () => {
         <Route path="/cancel" element={<Protected><Cancel /></Protected>}/>
         <Route path="/success" element={<Protected><Success /></Protected>}/>
         <Route path="/order" element={ <Protected> <OrderPage /></Protected>}/>
+        <Route path="/trackOrder/:id" element={<Protected><TrackOrder/></Protected>}/>
         <Route path="/profile" element={<Protected><Profile /></Protected>}/>
         <Route path="/updateProfile" element={<Protected><UpdateProfile /></Protected>}/>
         <Route path="/admin-panel" element={<AdminPanel />}>

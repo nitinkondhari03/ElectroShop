@@ -94,7 +94,7 @@ const Header = () => {
                     {user && (
                       <Link
                         to={"/profile"}
-                        className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
+                        className="whitespace-nowrap block hover:bg-slate-100 p-2"
                         onClick={() => setMenuDisplay((preve) => !preve)}
                       >
                         My Profile
@@ -103,7 +103,7 @@ const Header = () => {
 
                     <Link
                       to={"/order"}
-                      className="whitespace-nowrap hidden md:block hover:bg-slate-100 p-2"
+                      className="whitespace-nowrap block hover:bg-slate-100 p-2"
                       onClick={() => setMenuDisplay((preve) => !preve)}
                     >
                       Your Order

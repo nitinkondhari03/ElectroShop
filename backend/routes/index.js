@@ -25,7 +25,7 @@ const webhooks = require("../controller/order/webhook");
 const orderController = require("../controller/order/order.controller");
 const allOrderController = require("../controller/order/allOrder.controller");
 const googleauth = require("../controller/user/googleauth");
-const forgotPassword=require("../controller/user/forgotPassword");
+const forgotPassword = require("../controller/user/forgotPassword");
 const resetPassword = require("../controller/user/resetPassword");
 const changePassword = require("../controller/user/chnagePassword");
 const updateProfile = require("../controller/user/updateProfile");
@@ -34,6 +34,7 @@ const DeleteProductController = require("../controller/product/deleteProduct");
 const payment = require("../controller/payment/payment");
 const verify = require("../controller/payment/verify");
 const uploadOrders = require("../controller/order/uploadOrders");
+const getOdersDetails = require("../controller/order/getOderDetails");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -41,11 +42,11 @@ router.post("/signin", userSignInController);
 router.get("/user-details", authToken, userDetailsController);
 router.get("/userLogout", userLogout);
 router.post("/google", googleauth);
-router.post("/forgotPassword",forgotPassword)
-router.post("/resetPassword/:token",resetPassword)
-router.post("/changePassword",authToken,changePassword)
-router.post("/updateProfile",authToken,updateProfile)
-router.delete("/cloudinaryDelete",authToken,cloudinaryDelete)
+router.post("/forgotPassword", forgotPassword);
+router.post("/resetPassword/:token", resetPassword);
+router.post("/changePassword", authToken, changePassword);
+router.post("/updateProfile", authToken, updateProfile);
+router.delete("/cloudinaryDelete", authToken, cloudinaryDelete);
 //admin panel
 router.get("/all-user", authToken, allUsers);
 router.post("/update-user", authToken, updateUser);
@@ -59,7 +60,7 @@ router.post("/category-product", getCategoryWiseProduct);
 router.post("/product-details", getProductDetails);
 router.get("/search", searchProduct);
 router.post("/filter-product", filterProductController);
-router.delete("/DeleteProduct",authToken,DeleteProductController);
+router.delete("/DeleteProduct", authToken, DeleteProductController);
 //user add to cart
 router.post("/addtocart", authToken, addToCartController);
 router.get("/countAddToCartProduct", authToken, countAddToCartProduct);
@@ -70,9 +71,10 @@ router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 //payment and order
 // router.post("/checkout", authToken, paymentController);
 // router.post("/webhook", webhooks); // /api/webhook
+router.post("/order-details", authToken, getOdersDetails);
 router.get("/order-list", authToken, orderController);
 router.get("/all-order", authToken, allOrderController);
-router.get("/payment",authToken,payment)
-router.post("/payment/verify",authToken,verify)
-router.post("/order",authToken,uploadOrders)
+router.get("/payment", authToken, payment);
+router.post("/payment/verify", authToken, verify);
+router.post("/order", authToken, uploadOrders);
 module.exports = router;

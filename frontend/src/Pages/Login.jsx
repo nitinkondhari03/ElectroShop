@@ -20,11 +20,7 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
+
   
   const handleOnChange = (e) => {
     const { name, value } = e.target;

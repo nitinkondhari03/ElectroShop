@@ -128,7 +128,7 @@ const Cart = () => {
         payment_group: dataApi[0].payment_group,
         payment_status: dataApi[0].payment_status,
       },
-      shipping_status: "shipping soon",
+      shipping_status: "Ordered",
       shipping_Address: {
         address: addresss,
         city: citys,
@@ -169,7 +169,7 @@ const Cart = () => {
         payment_group: "Cash On Delivery",
         payment_status: "Pending",
       },
-      shipping_status: "shipping soon",
+      shipping_status: "Delivery Order",
       shipping_Address: {
         address: addresss,
         city: citys,
@@ -238,7 +238,7 @@ const Cart = () => {
                     return (
                       <div
                         key={product?._id + "Add To Cart Loading"}
-                        className="w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]"
+                        className="w-full bg-white h-32 my-2 border border-slate-300  rounded flex sm:grid sm:grid-cols-[128px,1fr]"
                       >
                         <div className="w-32 h-32 bg-slate-200">
                           <img
@@ -246,7 +246,7 @@ const Cart = () => {
                             className="w-full h-full object-scale-down mix-blend-multiply"
                           />
                         </div>
-                        <div className="px-4 py-2 relative">
+                        <div className="px-4 py-2 relative w-full">
                           {/**delete product */}
                           <div
                             className="absolute right-0 text-cyan-800 rounded-full p-2 hover:bg-cyan-900 hover:text-white cursor-pointer"
@@ -261,7 +261,7 @@ const Cart = () => {
                           <p className="capitalize text-slate-500">
                             {product?.productId.category}
                           </p>
-                          <div className="flex items-center justify-between">
+                          <div className="flex gap-4 sm:items-center sm:justify-between">
                             <p className="text-green-900 font-medium text-sm sm:text-lg">
                               {displayINRCurrency(
                                 product?.productId?.sellingPrice

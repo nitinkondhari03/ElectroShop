@@ -1,4 +1,4 @@
-const backendDomin = "http://localhost:8080";
+const backendDomin = "https://mern-a77g.onrender.com";
 //https://mern-a77g.onrender.com
 //http://localhost:8080
 const SummaryApi = {
@@ -125,6 +125,10 @@ const SummaryApi = {
   allOrder: {
     url: `${backendDomin}/api/all-order`,
     method: "get",
+  },
+  orderDetails: {
+    url: `${backendDomin}/api/order-details`,
+    method: "post",
   },
   uploadorder: {
     url: `${backendDomin}/api/order`,

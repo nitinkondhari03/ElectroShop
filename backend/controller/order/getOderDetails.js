@@ -1,10 +1,10 @@
-const productModel = require("../../models/productModel");
+const orderModel = require("../../models/orderProductModel");
 
-const getProductDetails = async (req, res) => {
+const getOdersDetails = async (req, res) => {
   try {
-    const { productId } = req.body;
+    const { orderId } = req.body;
 
-    const product = await productModel.findById(productId);
+    const product = await orderModel.findById(orderId);
 
     res.json({
       data: product,
@@ -21,4 +21,4 @@ const getProductDetails = async (req, res) => {
   }
 };
 
-module.exports = getProductDetails;
+module.exports = getOdersDetails;
