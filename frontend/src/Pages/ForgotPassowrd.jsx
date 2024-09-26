@@ -71,7 +71,7 @@ const ForgotPassowrd = () => {
             </Link>
             Don't have account ?{" "}
             <Link
-              to={"/sign-up"}
+              to={"/register"}
               className=" text-red-600 hover:text-red-700 hover:underline"
             >
               Register

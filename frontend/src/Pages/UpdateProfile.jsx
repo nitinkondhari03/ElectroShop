@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import imageTobase64 from "../helpers/imageTobase64";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
@@ -114,6 +114,15 @@ const UpdateProfile = () => {
                 </button>
               )}
             </form>
+            <p className="my-5">
+            Back To ?{" "}
+            <Link
+              to={"/profile"}
+              className=" text-red-600 hover:text-red-700 hover:underline"
+            >
+              Profile Page
+            </Link>
+          </p>
           </div>
         </div>
       </section>

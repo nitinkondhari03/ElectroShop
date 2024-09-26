@@ -143,6 +143,15 @@ const ChangePassword = () => {
                 </button>
               )}
             </form>
+            <p className="my-5">
+            Back To ?{" "}
+            <Link
+              to={"/profile"}
+              className=" text-red-600 hover:text-red-700 hover:underline"
+            >
+              Profile Page
+            </Link>
+          </p>
           </div>
         </div>
       </section>

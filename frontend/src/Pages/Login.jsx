@@ -11,7 +11,7 @@ import { showCart } from "../store/cartSlice/cartSlice";
 import LoadingButton from "../Components/LoadingButton";
 
 const Login = () => {
-  const { user, isAuthenticated } = useSelector((state) => state?.user);
+  const {isAuthenticated } = useSelector((state) => state?.user);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
@@ -61,7 +61,9 @@ const Login = () => {
     }
     setisLoading(false);
   };
-
+  if (isAuthenticated) {
+    navigate("/");
+  }
   return (
     <section id="login">
       <div className="mx-auto container p-4">
@@ -121,7 +123,7 @@ const Login = () => {
           <p className="my-5">
             Don't have account ?{" "}
             <Link
-              to={"/sign-up"}
+              to={"/register"}
               className=" text-red-600 hover:text-red-700 hover:underline"
             >
               Register

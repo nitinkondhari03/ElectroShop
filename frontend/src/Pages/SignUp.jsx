@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import LoadingButton from "../Components/LoadingButton";
 import { useSelector } from "react-redux";
 
 const SignUp = () => {
-  const {isAuthenticated } = useSelector((state) => state?.user)
+  const { isAuthenticated } = useSelector((state) => state?.user);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setisLoading] = useState(false);
@@ -63,11 +63,9 @@ const SignUp = () => {
       toast.error("Please check password and confirm password");
     }
   };
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
+  if (isAuthenticated) {
+    navigate("/");
+  }
   return (
     <section id="signup">
       <div className="mx-auto container p-4">
