@@ -11,8 +11,9 @@ import { toast } from "react-toastify";
 const UploadProduct = ({ onClose, fetchData }) => {
   const [data, setData] = useState({
     productName: "",
-    brandName: "",
     category: "",
+    brand: "",
+    brandName: "",
     productImage: [],
     description: "",
     price: "",
@@ -125,21 +126,6 @@ const UploadProduct = ({ onClose, fetchData }) => {
             className="p-2 bg-slate-100 border rounded"
             required
           />
-
-          <label htmlFor="brandName" className="mt-3">
-            Brand Name :
-          </label>
-          <input
-            type="text"
-            id="brandName"
-            placeholder="Enter Brand Name"
-            value={data.brandName}
-            name="brandName"
-            onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
-            required
-          />
-
           <label htmlFor="category" className="mt-3">
             Category :
           </label>
@@ -159,7 +145,33 @@ const UploadProduct = ({ onClose, fetchData }) => {
               );
             })}
           </select>
+          <label htmlFor="brand" className="mt-3">
+            Brand :
+          </label>
+          <input
+            type="text"
+            id="brand"
+            placeholder="Enter Brand"
+            value={data.brand}
+            name="brand"
+            onChange={handleOnChange}
+            className="p-2 bg-slate-100 border rounded"
+            required
+          />
 
+          <label htmlFor="brandName" className="mt-3">
+            Brand Name :
+          </label>
+          <input
+            type="text"
+            id="brandName"
+            placeholder="Enter Brand Name"
+            value={data.brandName}
+            name="brandName"
+            onChange={handleOnChange}
+            className="p-2 bg-slate-100 border rounded"
+            required
+          />
           <label htmlFor="productImage" className="mt-3">
             Product Image :
           </label>

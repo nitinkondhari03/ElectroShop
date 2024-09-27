@@ -61,9 +61,7 @@ const Login = () => {
     }
     setisLoading(false);
   };
-  if (isAuthenticated) {
-    navigate("/");
-  }
+
   return (
     <section id="login">
       <div className="mx-auto container p-4">

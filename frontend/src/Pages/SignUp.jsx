@@ -18,7 +18,6 @@ const SignUp = () => {
     password: "",
     name: "",
     confirmPassword: "",
-    profilePic: "",
   });
   const navigate = useNavigate();
 
@@ -63,9 +62,7 @@ const SignUp = () => {
       toast.error("Please check password and confirm password");
     }
   };
-  if (isAuthenticated) {
-    navigate("/");
-  }
+
   return (
     <section id="signup">
       <div className="mx-auto container p-4">

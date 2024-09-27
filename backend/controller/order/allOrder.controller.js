@@ -6,7 +6,7 @@ const allOrderController = async (request, response) => {
 
   const user = await userModel.findById(userId);
 
-  if (user.role !== "ADMIN") {
+  if (user.role !== "Admin") {
     return response.status(500).json({
       message: "not access",
     });
