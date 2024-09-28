@@ -183,7 +183,7 @@ const ProductDetails = () => {
             <p className="bg-green-800 text-white px-2 rounded-full inline-block w-fit">
               {data?.brandName}
             </p>
-            <h2 className="text-2xl lg:text-4xl font-medium">
+            <h2 className="text-2xl lg:text-3xl font-medium text-slate-500">
               {data?.productName}
             </h2>
             <p className="capitalize text-slate-400">{data?.category}</p>
@@ -197,10 +197,10 @@ const ProductDetails = () => {
             </div>
 
             <div className="flex items-center gap-2 text-xl lg:text-2xl font-medium my-1">
-              <p className="text-green-800 font-bold">
+              <p className="text-green-800 font-bold lg:text-2xl">
                 {displayINRCurrency(data.sellingPrice)}
               </p>
-              <p className="text-green-700 font-medium line-through ml-5">
+              <p className="text-green-700 font-medium lg:text-xl line-through ml-5">
                 {displayINRCurrency(data.price)}
               </p>
             </div>

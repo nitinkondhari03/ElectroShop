@@ -3,18 +3,14 @@ import scrollTop from "../helpers/scrollTop";
 import displayINRCurrency from "../helpers/displayCurrency";
 import addToCart from "../helpers/addToCart";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { showCart } from "../store/cartSlice/cartSlice";
-import LoadingButton from "./LoadingButton";
 const VerticalCard = ({ loading, data = [] }) => {
-  const [isLoading, setisLoading] = useState(false);
   const loadingList = new Array(13).fill(null);
   const dispatch = useDispatch();
   const handleAddToCart = async (e, id) => {
-    setisLoading(true)
     await addToCart(e, id);
     dispatch(showCart());
-    setisLoading(false)
   };
 
   return (
@@ -54,28 +50,27 @@ const VerticalCard = ({ loading, data = [] }) => {
                   />
                 </div>
                 <div className="grid gap-3 text-center">
-                  <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black">
+                  <p className="font-medium pl-1 text-sm text-ellipsis line-clamp-1 text-black">
                     {product?.productName}
-                  </h2>
+                  </p>
                   <p className="capitalize text-slate-500">
                     {product?.category}
                   </p>
                   <div className="flex gap-3 justify-evenly">
-                    <p className="text-green-800 font-bold">
+                    <p className="text-green-800 text-sm font-bold">
                       {displayINRCurrency(product?.sellingPrice)}
                     </p>
-                    <p className="text-green-700 font-medium line-through">
+                    <p className="text-green-700 text-sm font-medium line-through">
                       {displayINRCurrency(product?.price)}
                     </p>
                   </div>
-                  {isLoading?
-                  <LoadingButton/>:
+
                   <button
-                    className="text-lg w-full bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2 "
+                    className="text-md w-full bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2 "
                     onClick={(e) => handleAddToCart(e, product?._id)}
                   >
                     Add to Cart
-                  </button>}
+                  </button>
                 </div>
               </Link>
             );

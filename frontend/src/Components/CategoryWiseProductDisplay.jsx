@@ -15,7 +15,6 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
 
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
-
     dispatch(showCart());
   };
 
@@ -71,22 +70,23 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                     />
                   </div>
                   <div className="grid gap-3">
-                    <h2 className="font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-center text-black">
+                    <p className="font-medium text-sm text-ellipsis line-clamp-1 text-center text-black">
                       {product?.productName}
-                    </h2>
+                    </p>
                     <p className="capitalize text-center text-slate-500">
                       {product?.category}
                     </p>
                     <div className="flex gap-3 justify-around">
-                      <p className="text-green-800 font-bold">
+                      <p className="text-green-800 text-sm font-bold">
                         {displayINRCurrency(product?.sellingPrice)}
                       </p>
-                      <p className="text-green-700 font-medium line-through">
+                      <p className="text-green-700 text-sm font-medium line-through">
                         {displayINRCurrency(product?.price)}
                       </p>
                     </div>
+
                     <button
-                      className="text-lg bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2"
+                      className="text-md bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
                       Add to Cart

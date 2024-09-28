@@ -4,8 +4,9 @@ import displayINRCurrency from "../helpers/displayCurrency";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import addToCart from "../helpers/addToCart";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { showCart } from "../store/cartSlice/cartSlice";
+import LoadingButton from "./LoadingButton";
 const HorizontalCardProduct = ({ category, heading }) => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
@@ -15,10 +16,9 @@ const HorizontalCardProduct = ({ category, heading }) => {
   const [scroll, setScroll] = useState(0);
   const scrollElement = useRef();
 
-
   const handleAddToCart = async (e, id) => {
     await addToCart(e, id);
-    dispatch(showCart())
+    dispatch(showCart());
   };
 
   const fetchData = async () => {
@@ -94,20 +94,21 @@ const HorizontalCardProduct = ({ category, heading }) => {
                     />
                   </div>
                   <div className="grid w-full">
-                    <h2 className="font-medium text-center text-base md:text-lg text-ellipsis line-clamp-1 text-black">
+                    <p className="font-medium text-center h-11 text-sm line-clamp-2 text-ellipsis text-black">
                       {product?.productName}
-                    </h2>
+                    </p>
                     <p className="capitalize text-center text-slate-500">
                       {product?.category}
                     </p>
                     <div className="flex gap-3 justify-around">
-                      <p className="text-green-800 font-bold">
+                      <p className="text-green-800 text-sm font-bold">
                         {displayINRCurrency(product?.sellingPrice)}
                       </p>
-                      <p className="text-green-700 font-medium line-through">
+                      <p className="text-green-700 text-sm font-medium line-through">
                         {displayINRCurrency(product?.price)}
                       </p>
                     </div>
+
                     <button
                       className="text-sm bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-0.5"
                       onClick={(e) => handleAddToCart(e, product?._id)}

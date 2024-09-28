@@ -16,11 +16,15 @@ const productCategory = [
   // { id: 3, label: "Desktops", value: "desktops" },
   // { id: 4, label: "EarBuds", value: "earBuds" },
   // { id: 4, label: "Earphones", value: "earphones" }
- // { id: 1, label: "Watches", value: "watches" },
+  // { id: 1, label: "Watches", value: "watches" },
   // { id: 1, label:"Smartwatch", value:"smartwatch" },
   // { id: 1, label:"Drives & Storage", value:"drives & storage" }
   //{ id: 1, label:"Mobile Cover", value:"mobile cover" }
-  { id: 1, label:"Screen Protectors", value:"screen protectors" }
+  // { id: 1, label:"Screen Protectors", value:"screen protectors" }
+  // { id: 1, label:"Tablets", value:"tablets" }
+  //{ id: 2, label: "Camera", value: "camera" },
+  //{ id: 2, label:"Speakers", value:"speakers"},
+  { id: 1, label: "Washing Machines", value: "washing machines" },
 ];
 
 export default productCategory;

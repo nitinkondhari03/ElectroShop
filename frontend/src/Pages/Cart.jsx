@@ -255,28 +255,28 @@ const Cart = () => {
                             <MdDelete />
                           </div>
 
-                          <h2 className="text-lg lg:text-xl text-ellipsis line-clamp-1">
+                          <h2 className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1">
                             {product?.productId?.productName}
                           </h2>
                           <p className="capitalize text-slate-500">
                             {product?.productId.category}
                           </p>
                           <div className="flex gap-4 sm:items-center sm:justify-between">
-                            <p className="text-green-900 font-medium text-sm sm:text-lg">
+                            <p className="text-green-900 font-medium text-sm">
                               {displayINRCurrency(
                                 product?.productId?.sellingPrice
                               )}
                             </p>
-                            <p className="text-green-900 font-semibold text-sm sm:text-lg">
+                            <p className="text-green-900 font-semibold text-sm line-through">
                               {displayINRCurrency(
-                                product?.productId?.sellingPrice *
+                                product?.productId?.price *
                                   product?.quantity
                               )}
                             </p>
                           </div>
                           <div className="flex items-center gap-3 mt-1">
                             <button
-                              className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                              className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-5 h-5 flex justify-center items-center rounded "
                               onClick={() =>
                                 decraseQty(product?._id, product?.quantity)
                               }
@@ -285,7 +285,7 @@ const Cart = () => {
                             </button>
                             <span>{product?.quantity}</span>
                             <button
-                              className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                              className="border border-cyan-800 text-cyan-800 hover:bg-cyan-900 hover:text-white w-5 h-5 flex justify-center items-center rounded "
                               onClick={() =>
                                 increaseQty(product?._id, product?.quantity)
                               }

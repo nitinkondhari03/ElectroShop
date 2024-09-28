@@ -162,7 +162,7 @@ const CategoryProduct = () => {
         </div>
 
         {/***right side ( product ) */}
-        <div className="px-4 flex-none w-full sm:flex-auto sm:w-auto fixed sm:relative">
+        <div className="px-4 flex-none w-full sm:flex-auto sm:w-60 fixed sm:relative">
           <p className="font-medium invisible sm:visible text-slate-800 text-lg my-2">
             <p>Search Results : {data.length}</p>
           </p>
