@@ -46,10 +46,10 @@ const Profile = () => {
                 {user?.email}
               </dd>
             </div>
-            <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <div className="py-3 sm:py-5 grid sm:grid-cols-3 gap-4 px-6">
               <Link
                 to="/order"
-                className="bg-cyan-800 hover:bg-cyan-900 text-white rounded-lg text-center"
+                className="bg-cyan-800  hover:bg-cyan-900 text-white rounded-lg text-center"
               >
                 <button>My Orders</button>
               </Link>

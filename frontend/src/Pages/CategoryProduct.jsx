@@ -8,6 +8,7 @@ const CategoryProduct = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [isloading, setisloading] = useState(false);
   const [filters, setfilters] = useState(false);
   const location = useLocation();
   const urlSearch = new URLSearchParams(location.search);
@@ -24,6 +25,7 @@ const CategoryProduct = () => {
   const [sortBy, setSortBy] = useState("");
 
   const fetchData = async () => {
+    
     const response = await fetch(SummaryApi.filterProduct.url, {
       method: SummaryApi.filterProduct.method,
       headers: {
@@ -35,7 +37,9 @@ const CategoryProduct = () => {
     });
 
     const dataResponse = await response.json();
-    setData(dataResponse?.data || []);
+    let x = dataResponse?.data || [];
+    setData(x.reverse());
+    
   };
 
   const handleSelectCategory = (e) => {
@@ -50,10 +54,13 @@ const CategoryProduct = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchData();
+    setLoading(false);
   }, [filterCategoryList]);
 
   useEffect(() => {
+    setLoading(true);
     const arrayOfCategory = Object.keys(selectCategory)
       ?.map((categoryKeyName) => {
         if (selectCategory[categoryKeyName]) {
@@ -72,7 +79,7 @@ const CategoryProduct = () => {
       }
       return `category=${el}&&`;
     });
-
+    setLoading(false);
     navigate("/product-category?" + urlFormat.join(""));
   }, [selectCategory]);
 

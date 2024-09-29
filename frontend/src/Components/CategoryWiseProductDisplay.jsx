@@ -84,8 +84,8 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                         {displayINRCurrency(product?.price)}
                       </p>
                     </div>
-
-                    <button
+                   
+                     <button
                       className="text-md bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2"
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >

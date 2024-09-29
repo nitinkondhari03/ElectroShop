@@ -55,7 +55,7 @@ const TrackOrder = () => {
           </div>
           {data?.shipping_status == "Shipped" ||
           data?.shipping_status == "Out for delivery" ||
-          data?.shipping_status == "Delivery Order" ? (
+          data?.shipping_status == "Delivered" ? (
             <div>
               <div className="h-20 w-0.5 m-auto border-2 border-green-500/100"></div>
               <div className="w-10 m-auto flex h-10 flex-row">
@@ -81,7 +81,7 @@ const TrackOrder = () => {
             </div>
           )}
           {data?.shipping_status == "Out for delivery" ||
-          data?.shipping_status == "Delivery Order" ? (
+          data?.shipping_status == "Delivered" ? (
             <div>
               <div className="h-20 w-0.5 m-auto border-2 border-green-500/100"></div>
               <div className="w-10 m-auto flex h-10 flex-row">
@@ -106,7 +106,7 @@ const TrackOrder = () => {
               </div>
             </div>
           )}
-          {data?.shipping_status == "Delivery Order" ? (
+          {data?.shipping_status == "Delivered" ? (
             <div>
               <div className="h-20 w-0.5 m-auto border-2 border-green-500/100"></div>
               <div className="w-10 m-auto flex h-10 flex-row">
@@ -114,7 +114,7 @@ const TrackOrder = () => {
                   <TiTick color="white" size={"33"} className="bg-green-600" />
                 </div>
                 <div className="ml-5 text-lg font-bold text-cyan-800">
-                  Delivery Order
+                  Delivered
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@ const TrackOrder = () => {
                   <TiTick color="white" size={"33"} className="" />
                 </div>
                 <div className="ml-5 text-lg font-bold text-cyan-800">
-                  Delivery Order
+                Delivered
                 </div>
               </div>
             </div>

@@ -213,7 +213,7 @@ const ProductDetails = () => {
                 Buy
               </button>
               <button
-                className="border-2 border-cyan-800 rounded px-3 py-1 min-w-[120px] font-medium text-white bg-cyan-800 hover:text-cyan-900 hover:bg-white"
+                className="border-2 border-cyan-800 rounded px-3 py-1 min-w-[120px] font-medium text-cyan-800 hover:bg-cyan-900 hover:text-white"
                 onClick={(e) => handleAddToCart(e, data?._id)}
               >
                 Add To Cart

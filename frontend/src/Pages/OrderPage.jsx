@@ -75,15 +75,14 @@ const OrderPage = () => {
                             key={items + indexs}
                             className="flex flex-col lg:flex-row items-center py-6 gap-6 w-full"
                           >
-                            <Link to={"/product/"+items.productId._id}>
-                            <div className="img-box max-lg:w-full">
-                
-                              <img
-                                src={items.productId.productImage[0]}
-                                alt="Diamond Watch image"
-                                className="aspect-square w-full lg:max-w-[140px] rounded-xl"
-                              />
-                            </div>
+                            <Link to={"/product/" + items.productId._id}>
+                              <div className="img-box max-lg:w-full">
+                                <img
+                                  src={items.productId.productImage[0]}
+                                  alt="Diamond Watch image"
+                                  className="aspect-square w-full lg:max-w-[140px] rounded-xl"
+                                />
+                              </div>
                             </Link>
                             <div className="flex flex-row items-center w-full ">
                               <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
@@ -98,14 +97,13 @@ const OrderPage = () => {
                                   </div>
                                 </div>
                                 <div className="flex justify-evenly">
-                                 
                                   <div className="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
                                     <div className="flex gap-3 lg:block">
                                       <p className="font-medium text-lg leading-7 text-black">
-                                      Qty
+                                        Qty
                                       </p>
                                       <p className="lg:mt-4 font-medium text-lg leading-7 text-green-600">
-                                      {items.quantity}
+                                        {items.quantity}
                                       </p>
                                     </div>
                                   </div>
@@ -122,7 +120,6 @@ const OrderPage = () => {
                                     </div>
                                   </div>
                                 </div>
-                                
                               </div>
                             </div>
                           </div>
