@@ -40,7 +40,7 @@ const TrackOrder = () => {
           <CgClose />
         </div>
         <div className="text-lg text-center mt-0">
-          <h4 className="font-bold text-2xl">Track Order</h4>
+          <h4 className="font-bold text-xl">Track Order</h4>
         </div>
         <div className="pt-4">
           <div className="w-10 m-auto flex h-10 flex-row">
@@ -51,7 +51,7 @@ const TrackOrder = () => {
                 className="m-auto bg-green-600"
               />
             </div>
-            <div className="ml-5 text-lg font-bold text-cyan-800">Ordered</div>
+            <div className="ml-5 text-md font-bold text-cyan-800">Ordered</div>
           </div>
           {data?.shipping_status == "Shipped" ||
           data?.shipping_status == "Out for delivery" ||
@@ -62,7 +62,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="bg-green-600" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                   Shipped
                 </div>
               </div>
@@ -74,7 +74,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                   Shipped
                 </div>
               </div>
@@ -88,7 +88,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="bg-green-600" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                   Out for delivery
                 </div>
               </div>
@@ -100,7 +100,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                   Out for delivery
                 </div>
               </div>
@@ -113,7 +113,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="bg-green-600" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                   Delivered
                 </div>
               </div>
@@ -125,7 +125,7 @@ const TrackOrder = () => {
                 <div className="border-4 border-black-500/100">
                   <TiTick color="white" size={"33"} className="" />
                 </div>
-                <div className="ml-5 text-lg font-bold text-cyan-800">
+                <div className="ml-5 text-md font-bold text-cyan-800">
                 Delivered
                 </div>
               </div>

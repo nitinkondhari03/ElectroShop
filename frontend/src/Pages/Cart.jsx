@@ -374,21 +374,21 @@ const Cart = () => {
                   <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
                 ) : (
                   <div className="h-36 bg-white">
-                    <h2 className="text-white bg-green-800 px-4 py-1">
+                    <h2 className="text-white text-md bg-green-800 px-4 py-1">
                       Summary
                     </h2>
-                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                      <p>Quantity</p>
+                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-md text-slate-600">
+                      <p className="mt-2">Quantity</p>
                       <p>{totalQty}</p>
                     </div>
 
-                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                      <p>Total Price</p>
+                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-md text-slate-600">
+                      <p className="mt-2">Total Price</p>
                       <p>{displayINRCurrency(totalPrice)}</p>
                     </div>
 
                     <button
-                      className="bg-cyan-800 p-2 text-white w-full mt-2 capitalize hover:bg-cyan-900"
+                      className="bg-cyan-800 text-md p-2 text-white w-full mt-6 capitalize hover:bg-cyan-900"
                       onClick={() => setOpenAddress(true)}
                     >
                      Check Out

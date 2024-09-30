@@ -92,7 +92,7 @@ const VerticalCardProduct = ({ category, heading }) => {
                     />
                   </div>
                   <div className="grid gap-3 text-center">
-                    <p className="font-medium text-sm text-ellipsis line-clamp-1 overflow-hidden text-black">
+                    <p className="font-medium text-sm text-ellipsis line-clamp-1 overflow-hidden text-gray-600">
                       {product?.productName}
                     </p>
                     <p className="capitalize text-slate-500">

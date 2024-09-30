@@ -22,6 +22,7 @@ import UpdateProfile from "../Pages/UpdateProfile";
 import Protected from "./Protectedroutes";
 import PageNotFound from "../Pages/PageNotFound";
 import TrackOrder from "../Pages/TrackOrder";
+import AllCategories from "../Pages/AllCategories";
 const AllRoutes = () => {
   return (
     <div>
@@ -38,6 +39,7 @@ const AllRoutes = () => {
         <Route path="/search" element={<SearchProduct />} />
         <Route path="/cancel" element={<Protected><Cancel /></Protected>}/>
         <Route path="/success" element={<Protected><Success /></Protected>}/>
+        <Route path="/allcategories" element={<AllCategories/>}/>
         <Route path="/order" element={ <Protected> <OrderPage /></Protected>}/>
         <Route path="/trackOrder/:id" element={<Protected><TrackOrder/></Protected>}/>
         <Route path="/profile" element={<Protected><Profile /></Protected>}/>

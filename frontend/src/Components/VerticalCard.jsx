@@ -50,11 +50,11 @@ const VerticalCard = ({ loading, data = [] }) => {
                   />
                 </div>
                 <div className="grid gap-3 text-center">
-                  <p className="font-medium pl-1 text-sm text-ellipsis line-clamp-1 text-black">
+                  <p className="font-medium pl-1 text-sm text-ellipsis line-clamp-1 text-gray-600">
                     {product?.productName}
                   </p>
                   <p className="capitalize text-slate-500">
-                    {product?.category}
+                    {product?.brand}
                   </p>
                   <div className="flex gap-3 justify-evenly">
                     <p className="text-green-800 text-sm font-bold">

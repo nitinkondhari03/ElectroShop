@@ -94,11 +94,11 @@ const HorizontalCardProduct = ({ category, heading }) => {
                     />
                   </div>
                   <div className="grid w-full">
-                    <p className="font-medium text-center h-11 text-sm line-clamp-2 text-ellipsis text-black">
+                    <p className="font-medium text-center h-11 text-sm line-clamp-2 text-ellipsis text-gray-600">
                       {product?.productName}
                     </p>
                     <p className="capitalize text-center text-slate-500">
-                      {product?.category}
+                      {product?.brand}
                     </p>
                     <div className="flex gap-3 justify-around">
                       <p className="text-green-800 text-sm font-bold">

@@ -70,11 +70,11 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                     />
                   </div>
                   <div className="grid gap-3">
-                    <p className="font-medium text-sm text-ellipsis line-clamp-1 text-center text-black">
+                    <p className="font-medium text-sm text-ellipsis line-clamp-1 text-center text-gray-600">
                       {product?.productName}
                     </p>
                     <p className="capitalize text-center text-slate-500">
-                      {product?.category}
+                      {product?.brand}
                     </p>
                     <div className="flex gap-3 justify-around">
                       <p className="text-green-800 text-sm font-bold">

@@ -12,6 +12,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   const [data, setData] = useState({
     ...productData,
     productName: productData?.productName,
+    brand: productData?.brand,
     brandName: productData?.brandName,
     category: productData?.category,
     productImage: productData?.productImage || [],
@@ -46,8 +47,6 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
   };
 
   const handleDeleteProductImage = async (index) => {
-    
-
     const newProductImage = [...data.productImage];
     newProductImage.splice(index, 1);
 
@@ -115,7 +114,19 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             className="p-2 bg-slate-100 border rounded"
             required
           />
-
+          <label htmlFor="brand" className="mt-3">
+            Brand :
+          </label>
+          <input
+            type="text"
+            id="brand"
+            placeholder="Enter Brand"
+            value={data.brand}
+            name="brand"
+            onChange={handleOnChange}
+            className="p-2 bg-slate-100 border rounded"
+            required
+          />
           <label htmlFor="brandName" className="mt-3">
             Brand Name :
           </label>
