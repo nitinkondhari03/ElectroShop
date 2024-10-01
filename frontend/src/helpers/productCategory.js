@@ -2,7 +2,7 @@ const productCategory = [
   { id: 1, label: "Air Conditioners", value: "air conditioners" },
   { id: 2, label: "Camera", value: "camera" },
   { id: 3, label: "Desktops", value: "desktops" },
-  { id: 4, label: "Drives & Storage", value: "drives & storage" },
+  { id: 4, label: "Drives & Storage", value: "drives storage" },
   { id: 5, label: "EarBuds", value: "earBuds" },
   { id: 6, label: "Earphones", value: "earphones" },
   { id: 7, label: "Laptops", value: "laptops" },

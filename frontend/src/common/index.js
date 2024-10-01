@@ -112,7 +112,7 @@ const SummaryApi = {
   },
   payments: {
     url: `${backendDomin}/api/payment`,
-    method: "get",
+    method: "post",
   },
   paymentverify: {
     url: `${backendDomin}/api/payment/verify`,

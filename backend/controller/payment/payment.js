@@ -15,17 +15,19 @@ function generatOrderId() {
   const orderId = hash.digest("hex");
   return orderId.substr(0, 12);
 }
+
 const payment = async (req, res) => {
+  console.log(req.body)
   try {
     let request = {
-      order_amount: 200.0,
+      order_amount: req.body.totalPrice,
       order_currency: "INR",
       order_id: await generatOrderId(),
       customer_details: {
-        customer_id: "nitin193949",
-        customer_phone: "9999999999",
-        customer_name: "nitin",
-        customer_email: "nitinkondhari85@gmail.com",
+        customer_id: req.body.id,
+        customer_phone:req.body.phoneNo,
+        customer_name:req.body.name,
+        customer_email:req.body.email,
       },
     };
     Cashfree.PGCreateOrder("2023-08-01", request)
@@ -34,7 +36,7 @@ const payment = async (req, res) => {
         res.json(response.data);
       })
       .catch((error) => {
-        console.log("error.response.data.message", error.response.data.message); 
+        console.log("error.response.data.message", error.response.data.message);
         res.json("error.response.data.message", error.response.data.message);
       });
   } catch (error) {

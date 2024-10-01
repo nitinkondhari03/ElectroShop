@@ -7,7 +7,7 @@ import OrderAddress from "../Components/OrderAddress";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { showCart } from "../store/cartSlice/cartSlice";
-import Logoes from "../assets/Logo/Online Shop Logo.png"
+import Logoes from "../assets/Logo/Online Shop Logo.png";
 const Cart = () => {
   const { user } = useSelector((state) => state?.user);
   const { cart } = useSelector((state) => state?.cart);
@@ -171,7 +171,7 @@ const Cart = () => {
         payment_group: "Cash On Delivery",
         payment_status: "Pending",
       },
-      shipping_status: "Delivery Order",
+      shipping_status: "Ordered",
       shipping_Address: {
         address: addresss,
         city: citys,
@@ -198,74 +198,62 @@ const Cart = () => {
   return (
     <div className="container mx-auto">
       {isLoading ? (
-         <div>
-         <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
-           {/***view product */}
-           <div className="w-full max-w-3xl">
-             {loading
-               ? loadingCart?.map((el, index) => {
-                   return (
-                     <div
-                       key={el + "Add To Cart Loading" + index}
-                       className="w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded"
-                     ></div>
-                   );
-                 })
-               : cart?.map((product, index) => {
-                   return (
-                     <div
-                       key={product?._id + "Add To Cart Loading"}
-                       className="w-full bg-white h-32 my-2 border border-slate-300  rounded flex sm:grid sm:grid-cols-[128px,1fr]"
-                     >
-                       <div className="w-32 h-32 bg-slate-200 animate-pulse">
-                       </div>
-                       <div className="px-4 py-2 relative w-full">
-                         <h2 className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2">
-                          
-                         </h2>
-                         <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-6">
-                         </p>
-                         <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-6">
-                         </p>
-                       </div>
-                     </div>
-                   );
-                 })}
-           </div>
+        <div>
+          <div className="flex flex-col lg:flex-row gap-10 lg:justify-between p-4">
+            {/***view product */}
+            <div className="w-full max-w-3xl">
+              {loading
+                ? loadingCart?.map((el, index) => {
+                    return (
+                      <div
+                        key={el + "Add To Cart Loading" + index}
+                        className="w-full bg-slate-200 h-32 my-2 border border-slate-300 animate-pulse rounded"
+                      ></div>
+                    );
+                  })
+                : cart?.map((product, index) => {
+                    return (
+                      <div
+                        key={product?._id + "Add To Cart Loading"}
+                        className="w-full bg-white h-32 my-2 border border-slate-300  rounded flex sm:grid sm:grid-cols-[128px,1fr]"
+                      >
+                        <div className="w-32 h-32 bg-slate-200 animate-pulse"></div>
+                        <div className="px-4 py-2 relative w-full">
+                          <h2 className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2"></h2>
+                          <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-6"></p>
+                          <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-6"></p>
+                        </div>
+                      </div>
+                    );
+                  })}
+            </div>
 
-           {/***summary  */}
-           {!cart?.length == 0 && (
-             <div className="mt-5 lg:mt-0 w-full max-w-sm">
-               {loading ? (
-                 <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
-               ) : (
-                 <div className="h-36 bg-white">
-                   <h2 className="text-white bg-green-800 animate-pulse pt-4 w-full py-2 mt-6">
-                     
-                   </h2>
-                   <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                   <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-2">
-                   </p>
-                   
-                   </div>
+            {/***summary  */}
+            {!cart?.length == 0 && (
+              <div className="mt-5 lg:mt-0 w-full max-w-sm">
+                {loading ? (
+                  <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
+                ) : (
+                  <div className="h-36 bg-white">
+                    <h2 className="text-white bg-green-800 animate-pulse pt-4 w-full py-2 mt-6"></h2>
+                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
+                      <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-2"></p>
+                    </div>
 
-                   <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                   <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-3">
-                   </p>
-                   </div>
+                    <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
+                      <p className="text-sm pl-1 pr-2 text-ellipsis line-clamp-1 animate-pulse bg-slate-200 w-full py-2 mt-3"></p>
+                    </div>
 
-                   <button
-                     className="bg-cyan-800 p-2 text-white w-full mt-2 capitalize hover:bg-cyan-900 animate-pulse py-2 h-8"
-                     onClick={() => setOpenAddress(true)}
-                   >
-                    
-                   </button>
-                 </div>
-               )}
-             </div>
-           )}
-         </div>
-       </div>
+                    <button
+                      className="bg-cyan-800 p-2 text-white w-full mt-2 capitalize hover:bg-cyan-900 animate-pulse py-2 h-8"
+                      onClick={() => setOpenAddress(true)}
+                    ></button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
       ) : (
         <div>
           <div className="text-center text-lg my-3">
@@ -275,16 +263,15 @@ const Cart = () => {
                   <img src={Logoes} alt="Logo" className="m-auto" />
                 </div>
                 <div className="flex m-auto justify-center">
-                  <p className="text-xl font-bold text-green-800">Your Cart Is Empty!</p>
+                  <p className="text-xl font-bold text-green-800">
+                    Your Cart Is Empty!
+                  </p>
                 </div>
                 <div>
                   <Link to={"/"}>
-                <button
-                    className="text-sm w-60 bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2 mt-8"
-                   
-                  >
-                    Back To Home
-                  </button>
+                    <button className="text-sm w-60 bg-cyan-800 hover:bg-cyan-900 text-white px-3 py-2 mt-8">
+                      Back To Home
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -337,8 +324,7 @@ const Cart = () => {
                             </p>
                             <p className="text-green-900 font-semibold text-sm line-through">
                               {displayINRCurrency(
-                                product?.productId?.price *
-                                  product?.quantity
+                                product?.productId?.price * product?.quantity
                               )}
                             </p>
                           </div>
@@ -388,10 +374,10 @@ const Cart = () => {
                     </div>
 
                     <button
-                      className="bg-cyan-800 text-md p-2 text-white w-full mt-6 capitalize hover:bg-cyan-900"
+                      className="bg-cyan-800 text-sm p-2 text-white w-full mt-6 capitalize hover:bg-cyan-900"
                       onClick={() => setOpenAddress(true)}
                     >
-                     Check Out
+                      Check Out
                     </button>
                   </div>
                 )}
@@ -419,6 +405,8 @@ const Cart = () => {
         <PaymentMethod
           handlePaymentverify={handlePaymentverify}
           handleordercashondelivery={handleordercashondelivery}
+          totalPrice={totalPrice}
+          phoneNos={phoneNos}
           onClose={() => setOpenpaymentoption(false)}
         />
       )}

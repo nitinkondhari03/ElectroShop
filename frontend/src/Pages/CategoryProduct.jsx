@@ -4,28 +4,27 @@ import productCategory from "../helpers/productCategory";
 import VerticalCard from "../Components/VerticalCard";
 import SummaryApi from "../common";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
+
 const CategoryProduct = () => {
+  const loadingList = new Array(13).fill(null);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [isloading, setisloading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [filters, setfilters] = useState(false);
   const location = useLocation();
   const urlSearch = new URLSearchParams(location.search);
   const urlCategoryListinArray = urlSearch.getAll("category");
-
   const urlCategoryListObject = {};
   urlCategoryListinArray.forEach((el) => {
     urlCategoryListObject[el] = true;
   });
-
   const [selectCategory, setSelectCategory] = useState(urlCategoryListObject);
   const [filterCategoryList, setFilterCategoryList] = useState([]);
 
   const [sortBy, setSortBy] = useState("");
 
   const fetchData = async () => {
-    
+    console.log(SummaryApi.filterProduct.url)
     const response = await fetch(SummaryApi.filterProduct.url, {
       method: SummaryApi.filterProduct.method,
       headers: {
@@ -38,8 +37,8 @@ const CategoryProduct = () => {
 
     const dataResponse = await response.json();
     let x = dataResponse?.data || [];
-    setData(x.reverse());
-    
+    console.log(x)
+    setData(x);
   };
 
   const handleSelectCategory = (e) => {
@@ -53,11 +52,7 @@ const CategoryProduct = () => {
     });
   };
 
-  useEffect(() => {
-    setLoading(true);
-    fetchData();
-    setLoading(false);
-  }, [filterCategoryList]);
+
 
   useEffect(() => {
     setLoading(true);
@@ -80,10 +75,18 @@ const CategoryProduct = () => {
       return `category=${el}&&`;
     });
     setLoading(false);
+    console.log(urlFormat)
     navigate("/product-category?" + urlFormat.join(""));
   }, [selectCategory]);
 
+  useEffect(() => {
+    setLoading(true);
+    fetchData();
+    setLoading(false);
+  }, [filterCategoryList]);
+
   const handleOnChangeSortBy = (e) => {
+    setLoading(true);
     const { value } = e.target;
 
     setSortBy(value);
@@ -95,12 +98,15 @@ const CategoryProduct = () => {
     if (value === "dsc") {
       setData((preve) => preve.sort((a, b) => b.sellingPrice - a.sellingPrice));
     }
+    setLoading(false);
   };
 
   useEffect(() => {}, [sortBy]);
 
   const handleFilter = () => {
+    setLoading(true);
     setfilters(!filters);
+    setLoading(false);
   };
 
   return (
@@ -257,9 +263,7 @@ const CategoryProduct = () => {
             </div>
           )}
           <div className="min-h-[calc(100vh-120px)] overflow-y-scroll max-h-[calc(100vh-120px)]">
-            {data.length !== 0 && !loading && (
-              <VerticalCard data={data} loading={loading} />
-            )}
+            <VerticalCard data={data} loading={loading} />
           </div>
         </div>
       </div>

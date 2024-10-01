@@ -12,7 +12,6 @@ const VerticalCard = ({ loading, data = [] }) => {
     await addToCart(e, id);
     dispatch(showCart());
   };
-
   return (
     <div className="grid lg:grid-cols-3 gap-10 sm:grid-cols-2">
       {loading

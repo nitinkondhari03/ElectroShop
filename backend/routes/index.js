@@ -74,7 +74,7 @@ router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 router.post("/order-details", authToken, getOdersDetails);
 router.get("/order-list", authToken, orderController);
 router.get("/all-order", authToken, allOrderController);
-router.get("/payment", authToken, payment);
+router.post("/payment", authToken, payment);
 router.post("/payment/verify", authToken, verify);
 router.post("/order", authToken, uploadOrders);
 module.exports = router;
