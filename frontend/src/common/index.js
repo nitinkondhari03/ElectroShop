@@ -130,6 +130,10 @@ const SummaryApi = {
     url: `${backendDomin}/api/order-details`,
     method: "post",
   },
+  orderDelete: {
+    url: `${backendDomin}/api/order-delete/`,
+    method: "delete",
+  },
   uploadorder: {
     url: `${backendDomin}/api/order`,
     method: "post",

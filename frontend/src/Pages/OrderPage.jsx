@@ -3,6 +3,7 @@ import SummaryApi from "../common";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { Link } from "react-router-dom";
 import Logoes from "../assets/Logo/Online Shop Logo.png";
+import { toast } from "react-toastify";
 const OrderPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,29 @@ const OrderPage = () => {
     fetchOrderDetails();
   }, []);
 
+  const handleSubmit = async (event, id) => {
+    event.preventDefault();
+    console.log(SummaryApi.orderDelete.url + id);
+    const dataResponse = await fetch(SummaryApi.orderDelete.url + id, {
+      method: SummaryApi.orderDelete.method,
+      credentials: "include",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    console.log(dataResponse);
+    const dataApi = await dataResponse.json();
+    console.log(dataApi);
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      fetchOrderDetails()
+    }
+    if (dataApi.error) {
+      toast.error(dataApi.message);
+      fetchOrderDetails()
+    }
+    fetchOrderDetails()
+  };
   return (
     <>
       {loading ? (
@@ -110,21 +134,20 @@ const OrderPage = () => {
                         <div className="main-box border bg-white border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
                           <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
                             <div>
-                             
-                              <p className="font-semibold text-sm leading-7 text-gray-300">
+                              <p className="font-semibold text-sm leading-7 text-gray-400">
                                 Order Id:{" "}
                                 <span className="text-gray-500 font-semibold">
                                   {item._id}
                                 </span>
                               </p>
-                              <p className="font-semibold text-sm leading-7 text-gray-300 mt-1">
+                              <p className="font-semibold text-sm leading-7 text-gray-400 mt-1">
                                 Payment Method:{" "}
                                 <span className="text-gray-500 font-semibold">
                                   {" "}
                                   {item.paymentDetails.payment_group}
                                 </span>
                               </p>
-                              <p className="font-semibold text-sm leading-7 text-gray-300  mt-1">
+                              <p className="font-semibold text-sm leading-7 text-gray-400  mt-1">
                                 Payment Status:{" "}
                                 <span className="text-gray-500 text-sm leading-7">
                                   {" "}
@@ -167,14 +190,14 @@ const OrderPage = () => {
                                       <div className="flex items-center">
                                         <div className="">
                                           <p className="font-normal text-sm leading-8 text-gray-500 mb-3 text-center m-auto line-clamp-2">
-                                          {items.productId.productName}
+                                            {items.productId.productName}
                                           </p>
                                         </div>
                                       </div>
                                       <div className="flex justify-evenly">
                                         <div className="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
                                           <div className="flex gap-3 lg:block">
-                                            <p className="font-medium text-sm leading-7 text-gray-300">
+                                            <p className="font-medium text-sm leading-7 text-gray-400">
                                               Qty
                                             </p>
                                             <p className="lg:mt-4 font-semibold text-sm  leading-7 text-gray-500">
@@ -184,7 +207,7 @@ const OrderPage = () => {
                                         </div>
                                         <div className="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
                                           <div className="flex gap-3 lg:block">
-                                            <p className="font-medium text-sm leading-7 text-gray-300">
+                                            <p className="font-medium text-sm leading-7 text-gray-400">
                                               Price
                                             </p>
                                             <p className="lg:mt-4 font-semibold text-sm leading-7 text-gray-500">
@@ -231,36 +254,36 @@ const OrderPage = () => {
                               </span>
                               <br />
                               Address{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.shipping_Address.address}
                               </span>
                               <br />
                               Country{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.shipping_Address.country}
                               </span>
                               {"  ,"}
                               State{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.shipping_Address.state}
                               </span>
                               {"  ,"}
                               City{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.shipping_Address.city}
                               </span>
                               {"  ,"}
                               Pin Code{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.shipping_Address.pin}
                               </span>
                               <br />
                               Mobile Number{" : "}
-                              <span className="text-gray-300 text-sm">
+                              <span className="text-gray-400 text-sm">
                                 {item.mobile}
                               </span>
                             </p>
-                            <p className="font-semibold text-md text-gray-300 py-6">
+                            <p className="font-semibold text-md text-gray-400 py-6">
                               Total Price:{" "}
                               <span className="text-gray-500 text-sm">
                                 {" "}
@@ -269,10 +292,16 @@ const OrderPage = () => {
                                 )}
                               </span>
                             </p>
-                           { item?.shipping_status !== "Delivery Order" && 
-                             <button className="rounded-full pl-3 pr-3 pt-1 pb-1  mb-2 font-semibold text-sm text-white bg-green-800 transition-all duration-500 hover:bg-green-900 hover:shadow-green-700 lg:hidden">
-                                  Cancel Order
-                               </button>}
+                            {item?.shipping_status !== "Delivery Order" && (
+                              <button
+                                onClick={(event) =>
+                                  handleSubmit(event, item._id)
+                                }
+                                className="rounded-full pl-3 pr-3 pt-1 pb-1  mb-2 font-semibold text-sm text-white bg-green-800 transition-all duration-500 hover:bg-green-900 hover:shadow-green-700 lg:hidden"
+                              >
+                                Cancel Order
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>

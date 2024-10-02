@@ -3,9 +3,9 @@ import { app } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SummaryApi from "../common";
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { showUser } from "../store/userSlice/userSlice.js";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { showCart } from "../store/cartSlice/cartSlice.js";
 export default function GoogleAuth() {
   const dispatch = useDispatch();
@@ -20,6 +20,7 @@ export default function GoogleAuth() {
       const result = await signInWithPopup(auth, provider);
 
       let displayName = result.user.displayName;
+      console.log(displayName);
       displayName.split(" ");
       const res = await fetch(SummaryApi.googleAuth.url, {
         method: SummaryApi.googleAuth.method,
@@ -28,7 +29,7 @@ export default function GoogleAuth() {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          name: displayName[0],
+          name: displayName,
           email: result.user.email,
           photo: result.user.photoURL,
         }),

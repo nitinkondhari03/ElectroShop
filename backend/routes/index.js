@@ -35,6 +35,7 @@ const payment = require("../controller/payment/payment");
 const verify = require("../controller/payment/verify");
 const uploadOrders = require("../controller/order/uploadOrders");
 const getOdersDetails = require("../controller/order/getOderDetails");
+const deleteOrderController=require("../controller/order/deleteOrder")
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -72,6 +73,7 @@ router.post("/delete-cart-product", authToken, deleteAddToCartProduct);
 // router.post("/checkout", authToken, paymentController);
 // router.post("/webhook", webhooks); // /api/webhook
 router.post("/order-details", authToken, getOdersDetails);
+router.delete("/order-delete/:id",authToken,deleteOrderController)
 router.get("/order-list", authToken, orderController);
 router.get("/all-order", authToken, allOrderController);
 router.post("/payment", authToken, payment);
