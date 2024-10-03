@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { showUser } from "./store/userSlice/userSlice.js";
 import Header from "./Components/Header.jsx";
 import { showCart } from "./store/cartSlice/cartSlice.js";
-
+import Footer from "./Components/Footer.jsx";
 function App() {
   const dispatch = useDispatch();
 
@@ -23,6 +23,7 @@ function App() {
       <main className="min-h-[calc(100vh-120px)] pt-16">
         <AllRoutes />
       </main>
+      <Footer/>
     </div>
   );
 }

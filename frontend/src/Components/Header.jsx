@@ -39,16 +39,16 @@ const Header = () => {
   };
 
   return (
-    <header className="h-16 shadow-md bg-white fixed w-full z-40">
+    <header className="h-16 shadow-md bg-white fixed w-full z-40 pt-2">
       <div className=" h-full container mx-auto flex items-center px-4 justify-between">
         <div className="">
           <Link to={"/"}>
             {" "}
-            <img src={Logo} alt="Logo" width={90} h={50} />
+            <img src={Logo} alt="Logo" width={84} h={50} />
           </Link>
         </div>
 
-        <div className="hidden lg:flex items-center w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2">
+        <div className="hidden sm:flex items-center text-sm sm:w-50% md:w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2">
           <input
             type="text"
             placeholder="Search Product Here..."
@@ -56,7 +56,7 @@ const Header = () => {
             onChange={handleSearch}
             value={search}
           />
-          <div className="text-lg min-w-[50px] h-8 bg-cyan-800 flex items-center justify-center rounded-r-full text-white">
+          <div className="text-lg min-w-[50px] h-7 bg-cyan-800 flex items-center justify-center rounded-r-full text-white">
             <GrSearch />
           </div>
         </div>
@@ -65,22 +65,14 @@ const Header = () => {
           {user?._id && (
             <div className="relative flex justify-center">
               <div
-                className="text-3xl cursor-pointer relative flex justify-center"
+                className="text-2xl cursor-pointer relative flex justify-center"
                 onClick={() => setMenuDisplay((preve) => !preve)}
               >
-                {user?.profilePic ? (
-                  <img
-                    src={user?.profilePic}
-                    className="w-10 h-10 rounded-full"
-                    alt={user?.name}
-                  />
-                ) : (
-                  <FaRegCircleUser />
-                )}
+                <FaRegCircleUser />
               </div>
 
               {menuDisplay && (
-                <div className="absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded">
+                <div className="absolute bg-white bottom-0 text-sm top-11 h-fit p-2 shadow-lg rounded">
                   <nav>
                     {user?.role === ROLE.ADMIN && (
                       <Link
@@ -115,7 +107,7 @@ const Header = () => {
           )}
 
           {user?._id && (
-            <Link to={"/cart"} className="text-2xl relative">
+            <Link to={"/cart"} className="text-xl relative">
               <span>
                 <FaShoppingCart />
               </span>
@@ -130,14 +122,14 @@ const Header = () => {
             {user?._id ? (
               <button
                 onClick={handleLogout}
-                className="px-3 py-1 rounded-full text-white bg-cyan-800 hover:bg-cyan-900"
+                className="px-3 text-sm py-1 rounded-full text-white bg-cyan-800 hover:bg-cyan-900"
               >
                 Logout
               </button>
             ) : (
               <Link
                 to={"/login"}
-                className="px-3 py-1 rounded-full text-white bg-cyan-800 hover:bg-cyan-900"
+                className="px-3 text-sm py-1 rounded-full text-white bg-cyan-800 hover:bg-cyan-900"
               >
                 Login
               </Link>
