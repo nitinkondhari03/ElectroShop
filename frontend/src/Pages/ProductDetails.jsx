@@ -133,7 +133,7 @@ const ProductDetails = () => {
                 })}
               </div>
             ) : (
-              <div className="flex gap-2 lg:flex-col overflow-scroll scrollbar-none h-full">
+              <div className="flex gap-2 lg:flex-col overflow-y-scroll h-full">
                 {data?.productImage?.map((imgURL, index) => {
                   return (
                     <div

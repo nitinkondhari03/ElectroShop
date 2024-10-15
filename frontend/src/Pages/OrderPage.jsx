@@ -104,7 +104,7 @@ const OrderPage = () => {
           {data.length === 0 ? (
             <div>
               {data?.length === 0 && (
-                <div className="bg-white py-5">
+                <div className="bg-white py-5 mt-7">
                   <div className="flex m-auto justify-center w-20">
                     <img src={Logoes} alt="Logo" className="m-auto" />
                   </div>
@@ -228,7 +228,9 @@ const OrderPage = () => {
                           <div className="w-full border-gray-200 px-6 flex flex-col lg:flex-row items-center justify-between ">
                             {item?.shipping_status !== "Delivery Order" && (
                               <div className="hidden lg:flex lg:flex-row items-center border-gray-200">
-                                <button className="flex text-sm outline-0 text-gray-500 py-6 sm:pr-6  sm:border-r border-gray-200 whitespace-nowrap gap-2 items-center justify-center font-semibold group bg-white transition-all duration-500 hover:text-green-600">
+                                <button onClick={(event) =>
+                                  handleSubmit(event, item._id)
+                                } className="flex text-sm outline-0 text-gray-500 py-6 sm:pr-6  sm:border-r border-gray-200 whitespace-nowrap gap-2 items-center justify-center font-semibold group bg-white transition-all duration-500 hover:text-green-600">
                                   <svg
                                     className="stroke-black transition-all duration-500 group-hover:stroke-green-600"
                                     xmlns="http://www.w3.org/2000/svg"

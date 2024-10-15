@@ -258,7 +258,7 @@ const Cart = () => {
         <div>
           <div className="text-center text-lg my-3">
             {cart?.length === 0 && !loading && (
-              <div className="bg-white py-5">
+              <div className="bg-white py-5 mt-7">
                 <div className="flex m-auto justify-center w-20">
                   <img src={Logoes} alt="Logo" className="m-auto" />
                 </div>

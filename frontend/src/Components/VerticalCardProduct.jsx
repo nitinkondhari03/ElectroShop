@@ -39,7 +39,7 @@ const VerticalCardProduct = ({ category, heading }) => {
 
   return (
     <div className="container mx-auto px-4 my-6 relative">
-      <h2 className="text-2xl font-semibold py-4">{heading}</h2>
+      <h2 className="text-xl font-semibold text-gray-600 py-4">{heading}</h2>
 
       <div
         className="flex items-center gap-4 md:gap-6 overflow-x-scroll scrollbar-none transition-all"
