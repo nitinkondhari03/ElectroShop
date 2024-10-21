@@ -1,19 +1,17 @@
-import React, { useContext, useState } from "react";
-import loginIcons from "../assets/signin.gif";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
-import Context from "../context";
-import GoogleAuth from "../Components/GoogleAuth";
+import LoadingButton from "../Components/LoadingButton";
 const ForgotPassowrd = () => {
   const [data, setData] = useState({
     email: "",
   });
+  const [isLoading, setisLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setisLoading(true);
     const dataResponse = await fetch(SummaryApi.forgotPassword.url, {
       method: SummaryApi.forgotPassword.method,
       credentials: "include",
@@ -24,6 +22,19 @@ const ForgotPassowrd = () => {
     });
 
     const dataApi = await dataResponse.json();
+    console.log(dataApi.message);
+    if (dataApi.success) {
+      toast.success(dataApi.message);
+      setisLoading(false);
+      navigate("/");
+    }
+
+    if (dataApi.error) {
+      setisLoading(false);
+      toast.error(dataApi.message);
+      navigate("/");
+    }
+    setisLoading(false);
     navigate("/");
   };
   const handleOnChange = (e) => {
@@ -55,10 +66,13 @@ const ForgotPassowrd = () => {
                 />
               </div>
             </div>
-
-            <button className="bg-cyan-800 hover:bg-cyan-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-5">
-              Forgot Passowrd
-            </button>
+            {isLoading ? (
+              <LoadingButton />
+            ) : (
+              <button className="bg-cyan-800 hover:bg-cyan-900 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80 mt-5">
+                Forgot Passowrd
+              </button>
+            )}
           </form>
 
           <p className="my-5">
