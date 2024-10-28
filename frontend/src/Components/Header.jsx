@@ -19,7 +19,7 @@ const Header = () => {
   const URLSearch = new URLSearchParams(searchInput?.search);
   const searchQuery = URLSearch.getAll("q");
   const [search, setSearch] = useState(searchQuery);
-
+const [searchvisible,setsearchvisible]=useState(false)
   const handleLogout = async () => {
     dispatch(logoutUser());
     if (!isAuthenticated) {
@@ -33,8 +33,10 @@ const Header = () => {
     setSearch(value);
     if (value) {
       navigate(`/search?q=${value}`);
+     
     } else {
       navigate("/search");
+      
     }
   };
 
@@ -62,6 +64,9 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-7">
+        <div className="sm:hidden">
+<GrSearch size={20} onClick={()=>setsearchvisible(!searchvisible)}/>
+</div>
           {user?._id && (
             <div className="relative flex justify-center">
               <div
@@ -137,6 +142,22 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {searchvisible && <div className=" h-full bg-white sm:hidden mx-auto flex items-center px-4 mb-10 m-auto ">
+       
+
+        <div className="sm:hidden flex m-auto items-center text-sm w-full justify-between max-w-sm border rounded-full focus-within:shadow pl-2">
+          <input
+            type="text"
+            placeholder="Search Product Here..."
+            className="w-full outline-none"
+            onChange={handleSearch}
+            value={search}
+          />
+          <div className="text-lg min-w-[50px] h-7 bg-cyan-800 flex items-center justify-center rounded-r-full text-white">
+            <GrSearch />
+          </div>
+        </div>
+      </div>}
     </header>
   );
 };
