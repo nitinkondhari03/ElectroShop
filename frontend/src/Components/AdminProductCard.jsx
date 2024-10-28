@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdModeEditOutline } from "react-icons/md";
+import { MdEdit, MdModeEditOutline } from "react-icons/md";
 import AdminEditProduct from "./AdminEditProduct";
 import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
@@ -33,13 +33,13 @@ const AdminProductCard = ({ data, fetchdata }) => {
   };
   return (
     <div className="bg-white p-4 rounded ">
-      <div className="w-40">
-        <div className="w-32 h-32 flex justify-center items-center m-auto">
-          <img
-            src={data?.productImage[0]}
-            className="mx-auto object-fill h-full"
-          />
-        </div>
+      <div className="w-70">
+      <div className="bg-slate-200 h-48 p-4 flex justify-center items-center">
+                  <img
+                    src={data?.productImage[0]}
+                    className="object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply"
+                  />
+                </div>
         <hr />
         <h1 className="text-ellipsis line-clamp-2 text-center mt-1">
           {data.productName}
@@ -50,21 +50,25 @@ const AdminProductCard = ({ data, fetchdata }) => {
             {displayINRCurrency(data.sellingPrice)}
           </p>
           <p className="font-semibold">
-            {displayINRCurrency(data.sellingPrice)}
+            {displayINRCurrency(data.price)}
           </p>
         </div>
-        <div className="flex justify-between mt-2">
+        <div className="flex gap-2">
           <div
-            className="w-fit text-white p-2 bg-cyan-800 hover:bg-cyan-900 rounded-full hover:text-white cursor-pointer"
+            className=" text-white p-2 bg-red-500 hover:bg-red-800 rounded-full hover:text-white cursor-pointer w-1/2 flex justify-center"
             onClick={(e) => handleDelete(e, data._id)}
           >
-            <MdDelete />
+            <button className="">Delete</button>
+            <MdDelete className="mt-1 ml-1 size-5"/>
+            
           </div>
           <div
-            className="w-fit ml-auto text-white p-2 bg-cyan-800 hover:bg-cyan-900 rounded-full hover:text-white cursor-pointer"
+            className="w-1/2 ml-auto text-white p-2 bg-cyan-800 hover:bg-cyan-900 rounded-full hover:text-white cursor-pointer flex justify-center"
             onClick={() => setEditProduct(true)}
           >
-            <MdModeEditOutline />
+             <button className="">Edit</button>
+             <MdEdit className="ml-1 size-5"/>
+           
           </div>
         </div>
       </div>

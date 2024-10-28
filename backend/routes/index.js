@@ -35,7 +35,8 @@ const payment = require("../controller/payment/payment");
 const verify = require("../controller/payment/verify");
 const uploadOrders = require("../controller/order/uploadOrders");
 const getOdersDetails = require("../controller/order/getOderDetails");
-const deleteOrderController=require("../controller/order/deleteOrder")
+const deleteOrderController=require("../controller/order/deleteOrder");
+const updateOrderStatus = require("../controller/order/updateOrderStatus");
 const router = express.Router();
 
 router.post("/signup", userSignUpController);
@@ -79,4 +80,5 @@ router.get("/all-order", authToken, allOrderController);
 router.post("/payment", authToken, payment);
 router.post("/payment/verify", authToken, verify);
 router.post("/order", authToken, uploadOrders);
+router.patch("/update-shipping-status",authToken,updateOrderStatus)
 module.exports = router;

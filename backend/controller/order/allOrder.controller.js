@@ -1,23 +1,30 @@
 const orderModel = require("../../models/orderProductModel");
 const userModel = require("../../models/userModel");
 
-const allOrderController = async (request, response) => {
-  const userId = request.userId;
-
+const allOrderController = async (req, res) => {
+  const userId = req.userId;
   const user = await userModel.findById(userId);
-
-  if (user.role !== "Admin") {
-    return response.status(500).json({
+  if (user.role !== "ADMIN") {
+    return res.status(500).json({
       message: "not access",
     });
   }
+  try {
+    const AllOrder = await orderModel.find();
 
-  const AllOrder = await orderModel.find().sort({ createdAt: -1 });
-
-  return response.status(200).json({
-    data: AllOrder,
-    success: true,
-  });
+    res.status(200).json({
+      data: AllOrder,
+      success: true,
+      message: "All Orders ",
+      error: false,
+    });
+  } catch (err) {
+    res.status(400).json({
+      message: err.message || err,
+      error: true,
+      success: false,
+    });
+  }
 };
 
 module.exports = allOrderController;

@@ -134,6 +134,10 @@ const SummaryApi = {
     url: `${backendDomin}/api/order-delete/`,
     method: "delete",
   },
+  updateOrderstatus:{
+    url: `${backendDomin}/api/update-shipping-status/`,
+    method: "PATCH",
+  },
   uploadorder: {
     url: `${backendDomin}/api/order`,
     method: "post",

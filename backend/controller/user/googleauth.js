@@ -58,7 +58,7 @@ async function googleauth(req, res) {
         data: token,
         success: true,
         error: false,
-        message: "Google User created Successfully!",
+        message: "Google User Register Successfully!",
       });
       //
     }

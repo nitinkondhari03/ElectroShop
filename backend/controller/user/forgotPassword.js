@@ -53,7 +53,7 @@ async function forgotPassword(req, res) {
       >
       <p style="font-size: large; font-family: 'Courier New', Courier, monospace; font-size: medium;">
         if you did not initiate this request , please contact us immediately at
-        electroshop@gmail.com
+        nitinkondhari03@gmail.com
       </p>
       <p style="font-size: large; font-family: 'Courier New', Courier, monospace;font-size: medium;">
         Thank you
@@ -72,7 +72,7 @@ async function forgotPassword(req, res) {
     res.status(200).json({
       data: token,
       success: true,
-      message: `Email sent to ${user.email} successfully`,
+      message: `A password reset link has been successfully sent to ${user.email}. Please check your email`,
     });
   } catch (error) {
     res.json({
