@@ -44,6 +44,7 @@ async function forgotPassword(req, res) {
             color: white;
             font-size: 20px;
             padding: 1%;
+            cursor: pointer;
             border-radius: 12px;font-family: 'Courier New', Courier
           "
         >
