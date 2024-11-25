@@ -12,37 +12,33 @@ ElectroShop is an online platform that sells electronic items, including mobile 
 
  Frontend
 ```bash
-   npx create-react-app
-   npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
-   npm i country-state-city
-   npm install @mui/material @emotion/react @emotion/styled
-   npm install @mui/material @mui/styled-engine-sc styled-components
-   npm i axios
-   npm install --save chart.js react-chartjs-2
-   npm i react-data-grid
-   npm i react-material-ui-carousel
-   npm i react-multi-carousel
-   npm i react-redux
-   npm i react-router-dom
-   npm i redux
-   npm i redux-thunk
+  npm i bcryptjs
+  npm i cashfree-pg
+  npm i cloudinary
+  npm i cookie-parse
+  npm i cors
+  npm i crypto
+  npm i dotenv
+  npm i express
+  npm i jsonwebtoken
+  npm i mongoose
+  npm i nodemailer
    Start the server
 ```
  Backend
 ```bash
-   npm i body-parser
+   npm i bcryptjs
+   npm i cashfree-pg
    npm i cloudinary
-   npm i cookie-parser
+   npm i cookie-parse
    npm i cors
+   npm i crypto
    npm i dotenv
    npm i express
-   npm i express-fileupload
-   npm i js-cookie
    npm i jsonwebtoken
    npm i mongoose
    npm i nodemailer
-   npm i nodemon
-   npm i validator
+ Start the server
 ```
 ## Deployment
 
