@@ -115,25 +115,22 @@ https://vercel.com
 ![Product Page](https://github.com/user-attachments/assets/31b5116f-e830-4829-90cd-96b1e27969c8)
 
 ### 8. Product Details Page
-![Product detailes](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/dac43060-3a43-4c7a-b533-9ba4654d648b)
+![Product Dailtes](https://github.com/user-attachments/assets/1691d1d0-8c39-4f51-ab75-1c2f2e5a9be6)
 
 ### 9. Cart Page
-![Cart Page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/9808d249-f925-4199-86d8-47abe071c323)
+![cart](https://github.com/user-attachments/assets/33d6279b-3513-4cbf-8c67-dcf5c6e60c92)
 
-### 10. Shipping Details
-![shipping Details page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/e96923a7-b033-47ee-89ba-12741a640f30)
-
-### 11. Shipping Info
-![shipping Detailssdd page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/70c74c49-4add-4c4a-824c-211c6e571b82)
+### 10. Shipping Page
+![Shipping ](https://github.com/user-attachments/assets/fae419a5-c089-4913-a08b-2c73e5d4c7de)
 
 ### 12. Payment Page
-![Payment Page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/3b189a0f-48a1-48c8-8f29-99d5e6deefb3)
+![Payment](https://github.com/user-attachments/assets/5010299a-5596-48d9-b432-ced185b5fd22)
 
 ### 13. Orders Page
-![Orders Page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/c50f0f13-388f-49fc-a227-ecd8d6653bb3)
+![Order Page](https://github.com/user-attachments/assets/4db46a04-cf24-4000-9d0d-cc8e109283fa)
 
-### 14. Order Details Page
-![Order Details Page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/325447e9-1c46-4832-8b19-992daca0a67a)
+### 14. Track Orders Page
+![Track Order](https://github.com/user-attachments/assets/5f3f3f17-eb6a-46af-acaa-a0ca3cd93b33)
 
 ### 15. Admin Dashboard
 ![Dashboard page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/43c76293-6b53-4370-a670-3afb466eaf00)
