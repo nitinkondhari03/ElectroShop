@@ -12,17 +12,16 @@ ElectroShop is an online platform that sells electronic items, including mobile 
 
  Frontend
 ```bash
-  npm i bcryptjs
-  npm i cashfree-pg
-  npm i cloudinary
-  npm i cookie-parse
-  npm i cors
-  npm i crypto
+  npm i country-state-city
   npm i dotenv
-  npm i express
-  npm i jsonwebtoken
-  npm i mongoose
-  npm i nodemailer
+  npm i firebase
+  npm i india-pincode-lookup
+  npm i moment
+  npm i react
+  npm i react-dom
+  npm i react-icons
+  npm i react-router-dom
+  npm i react-toastify
    Start the server
 ```
  Backend
