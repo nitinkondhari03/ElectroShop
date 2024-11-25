@@ -4,9 +4,9 @@ ElectroShop is an online platform that sells electronic items, including mobile 
 
 ## Tech Stack
 
-**Front-end:** React, Redux, CSS 
+**Front-end:** React, Redux, TailwindsCSS, Firebase
 
-**Back-end:** Express, MongoDB, NodeJS 
+**Back-end:** Express, MongoDB, NodeJS , 
 
 ## Install dependencies
 
