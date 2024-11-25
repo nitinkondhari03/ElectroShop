@@ -139,7 +139,7 @@ https://vercel.com
 ![Admin User Page](https://github.com/user-attachments/assets/f9439708-4b4a-4626-8eb1-9da35896c7e1)
 
 ### 17. Admin Create Product page
-![Admin Create Product page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/d8a47eb4-bb6c-46df-8fa0-e8660b3b2b6e)
+![Admin Order](https://github.com/user-attachments/assets/d7564de9-daf0-4601-bf0d-194bfc72669d)
 
 ### 18. Admin All Orders Page
 ![Admin All Orders](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/57ca7c5f-ea7d-498c-bfda-77a8918ec265)
