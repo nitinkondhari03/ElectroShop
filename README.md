@@ -136,7 +136,7 @@ https://vercel.com
 ![Admin Page](https://github.com/user-attachments/assets/8676e905-5f74-4c61-b00b-2e7f0ba018ae)
 
 ### 16. Admin Product page
-![admin all product](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/263681b9-68f9-43e1-8932-4865ced1416c)
+![Admin User Page](https://github.com/user-attachments/assets/f9439708-4b4a-4626-8eb1-9da35896c7e1)
 
 ### 17. Admin Create Product page
 ![Admin Create Product page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/d8a47eb4-bb6c-46df-8fa0-e8660b3b2b6e)
