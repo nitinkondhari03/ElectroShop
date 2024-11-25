@@ -103,7 +103,7 @@ https://vercel.com
 ![Register Page](https://github.com/user-attachments/assets/e51ac881-4ed1-40f5-b506-cbde1adcd40e)
 
 ### 4. Forget Password
-![Forgot Password](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/7218a152-91de-46c8-af6b-081af86255e9)
+![Forget Password](https://github.com/user-attachments/assets/d40f0564-20ca-4ede-85ce-ee418a9a20a4)
 
 ### 5. My Profile
 ![My Profile](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/65308b0e-bd2a-4dca-bd57-63ef4a22b3fd)
