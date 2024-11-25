@@ -106,13 +106,13 @@ https://vercel.com
 ![Forget Password](https://github.com/user-attachments/assets/d40f0564-20ca-4ede-85ce-ee418a9a20a4)
 
 ### 5. My Profile
-![My Profile](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/65308b0e-bd2a-4dca-bd57-63ef4a22b3fd)
+![Profile Page](https://github.com/user-attachments/assets/19cf9fb5-a3aa-4146-999c-f563c9595be2)
 
 ### 6. Update Profile
-![Update Profile](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/98a14fae-6ade-48c2-bfb9-479021af05bd)
+![Update Profile](https://github.com/user-attachments/assets/52b65b76-96db-4296-8adc-6f4a23a33cab)
 
 ### 7. Product page
-![Products](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/c14d01ed-1457-4451-a354-d41afba9996d)
+![Product Page](https://github.com/user-attachments/assets/31b5116f-e830-4829-90cd-96b1e27969c8)
 
 ### 8. Product Details Page
 ![Product detailes](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/dac43060-3a43-4c7a-b533-9ba4654d648b)
