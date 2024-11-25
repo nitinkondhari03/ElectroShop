@@ -94,7 +94,7 @@ https://vercel.com
 ## ScreenShots
 
 ### 1. Homepage
-![HomePage](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/c4db0240-482c-45d0-bad9-97f3f8fdbd3a)
+![Home_Page](https://github.com/user-attachments/assets/0fbcdc7b-4ea0-4d27-9aa0-40ab74a172f9)
 
 ### 2. Login
 ![Login](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/9bc11fca-8289-4195-9d04-1355dcfb63ed)
