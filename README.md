@@ -100,7 +100,7 @@ https://vercel.com
 ![Login Page](https://github.com/user-attachments/assets/599b805f-1392-4f4a-938d-3c9796f5d0a7)
 
 ### 3. Register
-![REGISTER](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/a8710a82-0f1a-49e5-81ae-a16a843d174c)
+![Register Page](https://github.com/user-attachments/assets/e51ac881-4ed1-40f5-b506-cbde1adcd40e)
 
 ### 4. Forget Password
 ![Forgot Password](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/7218a152-91de-46c8-af6b-081af86255e9)
