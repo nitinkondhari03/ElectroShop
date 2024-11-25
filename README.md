@@ -93,22 +93,22 @@ https://vercel.com
 -   Admin Edit Product
 ## ScreenShots
 
-### 1. Homepage
+### 1. Homepage Page
 ![Home_Page](https://github.com/user-attachments/assets/0fbcdc7b-4ea0-4d27-9aa0-40ab74a172f9)
 
-### 2. Login
+### 2. Login Page
 ![Login Page](https://github.com/user-attachments/assets/599b805f-1392-4f4a-938d-3c9796f5d0a7)
 
-### 3. Register
+### 3. Register Page
 ![Register Page](https://github.com/user-attachments/assets/e51ac881-4ed1-40f5-b506-cbde1adcd40e)
 
-### 4. Forget Password
+### 4. Forget Password Page
 ![Forget Password](https://github.com/user-attachments/assets/d40f0564-20ca-4ede-85ce-ee418a9a20a4)
 
-### 5. My Profile
+### 5. My Profile Page
 ![Profile Page](https://github.com/user-attachments/assets/19cf9fb5-a3aa-4146-999c-f563c9595be2)
 
-### 6. Update Profile
+### 6. Update Profile Page
 ![Update Profile](https://github.com/user-attachments/assets/52b65b76-96db-4296-8adc-6f4a23a33cab)
 
 ### 7. Product page
@@ -132,11 +132,11 @@ https://vercel.com
 ### 14. Track Orders Page
 ![Track Order](https://github.com/user-attachments/assets/5f3f3f17-eb6a-46af-acaa-a0ca3cd93b33)
 
-### 15. Admin Product
+### 15. Admin Product Page
 ![Admin Page](https://github.com/user-attachments/assets/8676e905-5f74-4c61-b00b-2e7f0ba018ae)
 
-### 16. Admin Product page
+### 16. Admin User page
 ![Admin User Page](https://github.com/user-attachments/assets/f9439708-4b4a-4626-8eb1-9da35896c7e1)
 
-### 17. Admin Create Product page
+### 17. Admin Order Page
 ![Admin Order](https://github.com/user-attachments/assets/d7564de9-daf0-4601-bf0d-194bfc72669d)
