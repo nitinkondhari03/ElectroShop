@@ -133,7 +133,7 @@ https://vercel.com
 ![Track Order](https://github.com/user-attachments/assets/5f3f3f17-eb6a-46af-acaa-a0ca3cd93b33)
 
 ### 15. Admin Dashboard
-![Dashboard page](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/43c76293-6b53-4370-a670-3afb466eaf00)
+![Admin Page](https://github.com/user-attachments/assets/8676e905-5f74-4c61-b00b-2e7f0ba018ae)
 
 ### 16. Admin Product page
 ![admin all product](https://github.com/nitinkondhari03/ECOMMERCE/assets/107460712/263681b9-68f9-43e1-8932-4865ced1416c)
