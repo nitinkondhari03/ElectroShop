@@ -60,16 +60,11 @@ https://vercel.com
 -   Product Details Page
 -   Cart Page
 -   Shipping Details Page
--   Shipping Info Page
 -   payment Page
 -   Orders Page
--   Order Details Page
--   Admin Dashboard page
 -   Admin Product page
--   Admin Create a Product page
--   Admin All Orders Page
--   Admin All Users Page
--   Admin All Reviews Page
+-   Admin User page
+-   Admin Orders Page
 
 ## Features
 
@@ -86,7 +81,6 @@ https://vercel.com
 -   Payment Cart
 -   Order Product
 -   Order Details Product
--   Add Product Review
 -   Admin Get All Product
 -   Admin Create Product
 -   Admin Delete Product
